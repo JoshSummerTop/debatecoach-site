@@ -1,0 +1,389 @@
+<style>
+/* Layout: one blue hero band carrying the practice room; below it, quiet sections that each pair a sentence with the screen that proves it. */
+:root{
+  --bg:#ffffff; --tint:#f3f4f8; --paper:#ffffff; --ink:#161b2e; --muted:#5a6179; --line:#dfe2ec;
+  --accent:#2a4bd7; --accent-ink:#ffffff; --soft:#e8ecfb;
+  --turn:#1d7f57; --speak:#b86a12;
+  --band:#2a4bd7; --band-ink:#ffffff; --band-muted:#d5ddff; --ring:#ffffff;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"Figtree",ui-sans-serif,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1220; --tint:#141831; --paper:#171b2d; --ink:#eef0f8; --muted:#a8aec6; --line:#2a3049;
+  --accent:#8ea3ff; --accent-ink:#0f1220; --soft:#222a4a;
+  --turn:#5ccb98; --speak:#f0a65a;
+  --band:#1d2c8c; --band-ink:#ffffff; --band-muted:#c8d1ff; --ring:#ffffff; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1220; --tint:#141831; --paper:#171b2d; --ink:#eef0f8; --muted:#a8aec6; --line:#2a3049;
+  --accent:#8ea3ff; --accent-ink:#0f1220; --soft:#222a4a;
+  --turn:#5ccb98; --speak:#f0a65a;
+  --band:#1d2c8c; --band-ink:#ffffff; --band-muted:#c8d1ff; --ring:#ffffff; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);margin:0;font-size:17px;line-height:1.55}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.015em;text-wrap:balance;margin:0}
+h1{font-weight:800;font-size:clamp(40px,6vw,66px);line-height:1.03}
+h2{font-weight:800;font-size:clamp(30px,4vw,44px);line-height:1.08}
+h3{font-weight:700;font-size:21px;line-height:1.2}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+.band :focus-visible,.final :focus-visible{outline-color:var(--ring)}
+.skip{position:absolute;left:12px;top:-60px;background:var(--paper);color:var(--ink);padding:12px 16px;border-radius:10px;z-index:5;font-weight:700}
+.skip:focus{top:12px}
+
+/* hero band */
+.band{background:var(--band);color:var(--band-ink);position:relative;z-index:2}
+.deco{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.deco::after{content:"";position:absolute;right:-180px;top:-120px;width:620px;height:620px;border-radius:50%;border:2px solid rgba(255,255,255,.12);box-shadow:0 0 0 70px rgba(255,255,255,.04),0 0 0 140px rgba(255,255,255,.03)}
+.top{display:flex;align-items:center;justify-content:space-between;padding-block:16px;position:relative;z-index:1}
+.mark{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:21px;text-decoration:none;min-height:44px}
+.mark svg{width:24px;height:24px;flex:none}
+.navlinks{display:flex;gap:6px;align-items:center;font-size:15px;font-weight:600}
+.navlinks a{text-decoration:none;opacity:.9;min-height:44px;display:inline-flex;align-items:center;padding-inline:10px;border-radius:999px}
+.navlinks a:hover{opacity:1}
+.navcta{background:#fff;color:#1c34a3;padding-inline:18px!important;opacity:1!important;margin-left:8px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-block:28px 0;position:relative;z-index:1}
+.hero .lead{font-size:20px;color:var(--band-muted);max-width:36ch;margin-top:20px}
+.stores{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.store{display:flex;flex-direction:column;justify-content:center;min-width:176px;min-height:56px;padding:9px 20px;border-radius:14px;background:#0b0f22;color:#fff;border:1px solid rgba(255,255,255,.2)}
+.store small{font-size:12px;opacity:.82}
+.store b{font-family:var(--display);font-size:20px;font-weight:700;line-height:1.1}
+.note{font-size:15px;color:var(--band-muted);margin-top:14px}
+.hero-phone{align-self:end;justify-self:center;margin-bottom:-90px}
+
+/* phone frame and the app's own screen parts */
+.phone{width:300px;height:620px;background:var(--paper);color:var(--ink);border:9px solid #0b0f22;border-radius:42px;box-shadow:0 30px 60px rgba(8,12,40,.28);overflow:hidden;display:flex;flex-direction:column;font-size:14px;line-height:1.45;flex:none}
+.status{display:flex;justify-content:space-between;padding:12px 22px 0;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.screen{flex:1;display:flex;flex-direction:column;padding:14px 18px 16px;gap:12px;min-height:0}
+.s-title{font-family:var(--display);font-weight:700;font-size:21px;line-height:1.15;letter-spacing:-.01em}
+.s-sub{font-family:var(--display);font-weight:700;font-size:16px}
+.m{color:var(--muted);font-size:12.5px}
+.lab{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.btn{display:flex;align-items:center;justify-content:center;border-radius:13px;padding:12px;font-weight:700;font-size:15px;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--line)}
+.card{border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.card.soft{background:var(--soft);border-color:transparent}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1.5px solid var(--line);border-radius:999px;padding:5px 10px;font-size:12px;font-weight:500}
+.chip.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.input{border:1.5px solid var(--line);border-radius:11px;padding:9px 10px;font-size:13.5px}
+.seg{display:flex;border:1.5px solid var(--line);border-radius:11px;overflow:hidden}
+.seg div{flex:1;text-align:center;padding:7px 0;font-size:13px;font-weight:600}
+.seg .on{background:var(--ink);color:var(--paper)}
+.sp{flex:1}
+.track{height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.track i{display:block;height:100%;background:var(--turn)}
+.stage{font-family:var(--mono);font-size:12px;display:flex;justify-content:space-between}
+.pulse{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;flex:1;color:var(--turn)}
+.ring{width:132px;height:132px;border-radius:50%;display:grid;place-items:center;position:relative}
+.ring::before{content:"";position:absolute;inset:0;border-radius:50%;border:3px solid currentColor;opacity:.25}
+.ring::after{content:"";position:absolute;inset:14px;border-radius:50%;border:3px solid currentColor;opacity:.5}
+.ring b{width:66px;height:66px;border-radius:50%;background:currentColor}
+.state{font-family:var(--display);font-weight:800;font-size:24px}
+.coach{background:var(--soft);border-radius:11px;padding:9px 11px;font-size:13px}
+.coach b{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+.cap{border-left:3px solid var(--line);padding:3px 9px;font-size:12.5px;color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.two .btn{font-size:13.5px;white-space:nowrap;padding-inline:6px}
+.score{display:flex;align-items:baseline;gap:4px;font-family:var(--display);font-weight:800}
+.score .n{font-size:46px;line-height:1;letter-spacing:-.03em}
+.score .d{font-size:15px;color:var(--muted)}
+.mk{display:grid;grid-template-columns:76px 1fr 24px;gap:7px;align-items:center;font-size:12px}
+.mk .b{height:7px;border-radius:4px;background:var(--line);overflow:hidden}
+.mk .b i{display:block;height:100%;background:var(--accent)}
+.mk .v{font-family:var(--mono);font-size:11px;text-align:right}
+.snd{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.snd div{border:1px solid var(--line);border-radius:10px;padding:6px 8px}
+.snd b{display:block;font-family:var(--mono);font-size:13px}
+.snd span{font-size:10px;color:var(--muted)}
+.video{aspect-ratio:16/9;border-radius:12px;background:#0b0f22;border:1px solid var(--line);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font-size:11px}
+.video span:first-child{width:38px;height:38px;border-radius:50%;background:#2a4bd7;display:grid;place-items:center;font-size:13px;color:#fff}
+
+/* sections */
+section{padding-block:96px}
+.kinds{background:var(--tint);padding-block:124px 72px}
+.stack{display:flex;flex-direction:column;gap:14px;max-width:660px}
+.kindgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px}
+.kind{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.kind .len{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:600}
+.kind p{color:var(--muted);font-size:15.5px}
+.steprow{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px}
+.step{display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center}
+.step .num{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:600}
+.step p{color:var(--muted);font-size:16px;max-width:30ch}
+.step .phone{transform:scale(.86);transform-origin:top center;margin-bottom:-86px;margin-top:6px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.split .copy{display:flex;flex-direction:column;gap:18px;max-width:46ch}
+.split .copy p{color:var(--muted)}
+.ticks{list-style:none;padding:0;margin:6px 0 0;display:flex;flex-direction:column;gap:10px}
+.ticks li{padding-left:30px;position:relative}
+.ticks li::before{content:"";position:absolute;left:0;top:5px;width:16px;height:16px;border-radius:50%;background:var(--soft);box-shadow:inset 0 0 0 5px var(--accent)}
+.alt{background:var(--tint)}
+.split .phone{justify-self:center}
+.parents{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+.parents div{border-top:3px solid var(--accent);padding-top:16px;display:flex;flex-direction:column;gap:6px}
+.parents p{color:var(--muted);font-size:16px}
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;margin-top:30px}
+details{border-bottom:1px solid var(--line)}
+summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:56px;padding-block:10px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);font-size:18px;color:var(--accent)}
+details[open] summary::after{content:"\2212"}
+details p{color:var(--muted);padding-bottom:16px;font-size:16px}
+.final{background:var(--band);color:var(--band-ink);text-align:center}
+.final .wrap{display:flex;flex-direction:column;align-items:center;gap:16px}
+.final p{color:var(--band-muted);font-size:19px}
+footer{padding-block:24px;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+footer .links{display:flex;gap:6px}
+footer .links a{min-height:44px;display:inline-flex;align-items:center;padding-inline:8px;text-decoration:none}
+footer .links a:hover{text-decoration:underline}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .hero-phone{margin-bottom:-70px}
+  .kindgrid{grid-template-columns:1fr 1fr}
+  .steprow{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+  .split.flip .phone{order:2}
+  .parents,.faq{grid-template-columns:1fr}
+  .navlinks a:not(.navcta){display:none}
+}
+@media (max-width:520px){.kindgrid{grid-template-columns:1fr} .phone{width:280px;height:590px} section{padding-block:72px} h1{font-size:38px}}
+</style>
+
+<a class="skip" href="#main">Skip to the content</a>
+<header class="band">
+  <div class="deco" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="top">
+      <a class="mark" href="#top" aria-label="Debate Coach, back to the top">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2.5" fill="currentColor"/></svg>
+        Debate Coach
+      </a>
+      <nav class="navlinks" aria-label="Main">
+        <a href="#how">How it works</a>
+        <a href="#lessons">Lessons</a>
+        <a href="#parents">For parents</a>
+        <a href="#faq">Questions</a>
+        <a class="navcta" href="#get">Get the app</a>
+      </nav>
+    </div>
+    <div class="hero" id="top">
+      <div>
+        <h1>Practise debating with a coach who listens.</h1>
+        <p class="lead">Argue out loud against an AI opponent. Your coach chairs the round, keeps the time, and tells you the one thing to change next time.</p>
+        <div class="stores" role="list" aria-label="Where to get the app">
+          <div class="store" role="listitem"><small>Coming soon to the</small><b>App Store</b></div>
+          <div class="store" role="listitem"><small>Coming soon to</small><b>Google Play</b></div>
+        </div>
+        <p class="note">For iPhone and Android.</p>
+      </div>
+      <div class="hero-phone">
+        <div class="phone" role="img" aria-label="The practice room on a phone. It's your turn, with one minute twelve seconds left. The coach says to name their strongest point first.">
+          <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+          <div class="screen">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div class="stage"><span>Your rebuttal</span><span>1:12 left</span></div>
+              <div class="track"><i style="width:62%"></i></div>
+            </div>
+            <div class="pulse"><div class="ring"><b></b></div><div class="state">Your turn</div><div class="m">Say the point, then why it fails.</div></div>
+            <div class="coach"><b>Coach</b>Go when you're ready. Name their strongest point first.</div>
+            <div class="cap">Your opponent said: banning phones removes a tool teachers already use for quick research.</div>
+            <div class="two"><div class="btn ghost">Finish speech</div><div class="btn ghost">Leave</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="kinds" aria-labelledby="kinds-h">
+  <div class="wrap">
+    <div class="stack">
+      <span class="eyebrow">Four ways to practise</span>
+      <h2 id="kinds-h">Four minutes or thirty. The coach keeps the clock.</h2>
+    </div>
+    <div class="kindgrid">
+      <div class="kind"><span class="len">4 to 5 min</span><h3>Drill</h3><p>Work on one skill at a time, such as rebuttal or weighing.</p></div>
+      <div class="kind"><span class="len">2 to 7 min</span><h3>Speech</h3><p>Persuade, explain or tell a story, then hear how it landed.</p></div>
+      <div class="kind"><span class="len">5 to 15 min</span><h3>Conversation</h3><p>Talk with a partner who plays a role, like an interviewer.</p></div>
+      <div class="kind"><span class="len">24 to 32 min</span><h3>One-to-one debate</h3><p>You against one AI opponent, with the coach in the chair.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="stack">
+      <span class="eyebrow">How it works</span>
+      <h2 id="how-h">Set it up, say it out loud, read the report.</h2>
+    </div>
+    <ol class="steprow" style="list-style:none;padding:0;margin-block-end:0">
+      <li class="step">
+        <span class="num">Step 1</span><h3>Set it up in your own words</h3>
+        <p>Write the motion or tap Suggest. Then pick your side and the one thing you want to improve.</p>
+        <div class="phone" role="img" aria-label="The booking card for a one-to-one debate on banning phones in schools, arguing for, working on rebuttal.">
+          <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+          <div class="screen">
+            <div class="m">‹ Back</div>
+            <div class="s-title">One-to-one debate</div>
+            <div style="display:flex;flex-direction:column;gap:5px"><span class="lab">The motion</span><div class="input">This house would ban phones in schools.</div></div>
+            <div style="display:flex;flex-direction:column;gap:5px"><span class="lab">You argue</span><div class="seg"><div class="on">For</div><div>Against</div></div></div>
+            <div style="display:flex;flex-direction:column;gap:5px"><span class="lab">The one thing to improve</span><div class="chips"><span class="chip on">Rebuttal</span><span class="chip">Structure</span><span class="chip">Pace</span><span class="chip">Evidence</span></div></div>
+            <div class="sp"></div>
+            <div class="btn">Start now</div>
+          </div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="num">Step 2</span><h3>Argue it out loud</h3>
+        <p>Your opponent answers what you actually said. The screen always shows whose turn it is and how long is left.</p>
+        <div class="phone" role="img" aria-label="The practice room while the opponent speaks, with two minutes forty seconds left in their opening.">
+          <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+          <div class="screen">
+            <div style="display:flex;flex-direction:column;gap:6px"><div class="stage"><span>Their opening</span><span>2:40 left</span></div><div class="track"><i style="width:35%;background:var(--speak)"></i></div></div>
+            <div class="pulse" style="color:var(--speak)"><div class="ring"><b></b></div><div class="state">Speaking</div><div class="m">Your opponent has the floor.</div></div>
+            <div class="cap">Phones are part of how students learn now, and a ban teaches them nothing about using them well.</div>
+            <div class="two"><div class="btn ghost">Finish speech</div><div class="btn ghost">Leave</div></div>
+          </div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="num">Step 3</span><h3>Read your report</h3>
+        <p>It's ready about two minutes after you finish. It gives a score, what to keep doing and the one thing to change.</p>
+        <div class="phone" role="img" aria-label="A report scoring 74 out of 100, with what to keep doing, what to change, four marks and how the speaker sounded.">
+          <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+          <div class="screen">
+            <div style="display:flex;justify-content:space-between;align-items:flex-end"><div><span class="lab">Your report</span><div class="s-sub">One-to-one debate</div></div><div class="score"><span class="n">74</span><span class="d">/100</span></div></div>
+            <div class="card soft"><div style="font-size:13px"><b>Keep doing:</b> you opened with your strongest point.</div><div style="font-size:13px"><b>Change next time:</b> say why their point fails, not only that it does.</div></div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div class="mk"><span>Argument</span><div class="b"><i style="width:78%"></i></div><span class="v">78</span></div>
+              <div class="mk"><span>Rebuttal</span><div class="b"><i style="width:61%"></i></div><span class="v">61</span></div>
+              <div class="mk"><span>Structure</span><div class="b"><i style="width:80%"></i></div><span class="v">80</span></div>
+              <div class="mk"><span>Delivery</span><div class="b"><i style="width:81%"></i></div><span class="v">81</span></div>
+            </div>
+            <span class="lab">How you sounded</span>
+            <div class="snd"><div><b>148</b><span>words a min</span></div><div><b>6</b><span>fillers</span></div><div><b>2:51</b><span>of 3:00</span></div></div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="alt" id="lessons" aria-labelledby="lessons-h">
+  <div class="wrap split flip">
+    <div class="phone" role="img" aria-label="A lesson called Rebuttal: say why it fails, with a four-minute video, a short text, a check question and a button to practise it.">
+      <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+      <div class="screen">
+        <div class="m">‹ How a debate works</div>
+        <span class="lab">Lesson 3 of 5</span>
+        <div class="s-title">Rebuttal: say why it fails</div>
+        <div class="video"><span>▶</span><span>4:10 · Rebuttal</span></div>
+        <div style="font-size:13px">A rebuttal has two halves. First name their point in one sentence. Then say why it fails.</div>
+        <div class="card"><span class="lab">Check</span><div style="font-size:12.5px">"Phones distract students" fails because grades didn't drop. Which half is that?</div><div class="chips"><span class="chip on">The reason is wrong</span><span class="chip">It doesn't matter</span></div></div>
+        <div class="sp"></div>
+        <div class="btn">Practise it: rebuttal drill</div>
+      </div>
+    </div>
+    <div class="copy">
+      <span class="eyebrow">Lessons</span>
+      <h2 id="lessons-h">Watch a short lesson. Then do it.</h2>
+      <p>Each lesson is a few minutes of video from a debate coach, a short read and a quick check. Most end with a practice that's already set up, so you try the idea while it's fresh.</p>
+      <ul class="ticks">
+        <li>Courses that start with what a motion asks and build to weighing</li>
+        <li>A drill or a speech ready at the end of most lessons</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="next-h">
+  <div class="wrap split">
+    <div class="copy">
+      <span class="eyebrow">What to practise next</span>
+      <h2 id="next-h">Every report sets up the next practice.</h2>
+      <p>The coach reads your last report and suggests what to work on today. If your rebuttals named the point but not why it fails, today's practice is a rebuttal drill.</p>
+      <ul class="ticks">
+        <li>Today's practice, picked from your last report</li>
+        <li>Every report kept in one place to read again</li>
+      </ul>
+    </div>
+    <div class="phone" role="img" aria-label="The home screen. Today's practice is a four-minute rebuttal drill, suggested from the last report.">
+      <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+      <div class="screen">
+        <div style="font-family:var(--display);font-weight:800;font-size:16px">Debate Coach</div>
+        <div class="s-title">Hi Ana. Ready for today?</div>
+        <div class="card soft"><span class="lab">Today's practice</span><div class="s-sub">Rebuttal drill, 4 minutes</div><div class="m">Your last report said your rebuttals name the point but not why it fails.</div><div class="btn" style="padding:8px 14px;font-size:13px;align-self:flex-start">Start</div></div>
+        <span class="lab">Or choose</span>
+        <div class="two">
+          <div class="card" style="gap:1px"><b style="font-size:13.5px">Drill</b><span class="m">4 to 5 min</span></div>
+          <div class="card" style="gap:1px"><b style="font-size:13.5px">Speech</b><span class="m">2 to 7 min</span></div>
+          <div class="card" style="gap:1px"><b style="font-size:13.5px">Conversation</b><span class="m">5 to 15 min</span></div>
+          <div class="card" style="gap:1px"><b style="font-size:13.5px">Debate</b><span class="m">One-to-one</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="parents" aria-labelledby="parents-h">
+  <div class="wrap">
+    <div class="stack">
+      <span class="eyebrow">For parents</span>
+      <h2 id="parents-h">No strangers, no chat, no public profile.</h2>
+    </div>
+    <div class="parents">
+      <div><h3>Practice with AI only</h3><p>The opponent and the coach are AI. Your child never talks to another person in the app.</p></div>
+      <div><h3>Recordings stay in the account</h3><p>Each practice is recorded so the coach can write the report. It's kept in your child's account.</p></div>
+      <div><h3>The skills a judge marks</h3><p>Reports mark argument, rebuttal, structure and delivery the way a debate judge would.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <div class="stack">
+      <span class="eyebrow">Questions</span>
+      <h2 id="faq-h">Before you start</h2>
+    </div>
+    <div class="faq">
+      <div>
+        <details open><summary>Who is Debate Coach for?</summary><p>It's for students who want to debate and speak better, from a first debate club to competition. Adults use it too.</p></details>
+        <details><summary>Do I need any experience?</summary><p>No. The coach explains each round before it starts and gives an example the first time you try something new.</p></details>
+        <details><summary>What do I need?</summary><p>You need a phone and a quiet place to talk. Earphones help, but you don't need them.</p></details>
+      </div>
+      <div>
+        <details><summary>Do I talk to real people?</summary><p>No. Your opponent and your coach are AI, so you can practise whenever you like.</p></details>
+        <details><summary>How much does it cost?</summary><p>Prices will be in the App Store and Google Play when the app launches.</p></details>
+        <details><summary>When is it available?</summary><p>Debate Coach is in testing now. It's coming to iPhone and Android.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="get" aria-labelledby="get-h">
+  <div class="wrap">
+    <h2 id="get-h">Your next practice is four minutes away.</h2>
+    <p>Debate Coach is coming to iPhone and Android.</p>
+    <div class="stores" role="list" aria-label="Where to get the app" style="justify-content:center">
+      <div class="store" role="listitem"><small>Coming soon to the</small><b>App Store</b></div>
+      <div class="store" role="listitem"><small>Coming soon to</small><b>Google Play</b></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Debate Coach</span>
+    <nav class="links" aria-label="Footer"><a href="#how">How it works</a><a href="#parents">For parents</a><a href="#faq">Questions</a></nav>
+  </div>
+</footer>
