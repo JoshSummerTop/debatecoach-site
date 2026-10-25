@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Debate Coach: learn to argue in English, out loud</title>
 <meta name="description" content="Learn to argue in English, out loud. Conversations, speeches, drills and full debates with a coach who listens, with notes in your family's language. Coming to iPhone and Android.">
-<meta name="theme-color" content="#2a4bd7">
+<meta name="theme-color" content="#0e7a70">
 <link rel="canonical" href="https://debatecoach.app/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -15,41 +15,45 @@
 <meta property="og:description" content="Learn to argue in English, out loud. Conversations, speeches, drills and full debates with a coach who listens, with notes in your family's language. Coming to iPhone and Android.">
 <meta property="og:image" content="https://debatecoach.app/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@500;600&display=swap">
 </head>
 <body>
 <style>
-/* Layout: one blue hero band carrying the practice room; below it, quiet sections that each pair a sentence with the screen that proves it. */
+/* Layout: one teal hero band carrying the practice room; below it, quiet sections that each pair a sentence with the screen that proves it.
+   Palette and faces are Shadow Judge's (warm paper, ink, teal, rust; Instrument Sans, Spline Sans Mono). Your turn speaks teal, the opponent rust, as Proposition and Opposition do there. */
 :root{
-  --bg:#ffffff; --tint:#f3f4f8; --paper:#ffffff; --ink:#161b2e; --muted:#5a6179; --line:#dfe2ec;
-  --accent:#2a4bd7; --accent-ink:#ffffff; --soft:#e8ecfb;
-  --turn:#1d7f57; --speak:#b86a12;
-  --band:#2a4bd7; --band-ink:#ffffff; --band-muted:#d5ddff; --ring:#ffffff;
-  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
-  --body:"Figtree",ui-sans-serif,system-ui,sans-serif;
-  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --bg:#f6f6f3; --tint:#edede8; --paper:#ffffff; --ink:#181c1b; --muted:#5d6560; --line:#e2e2db;
+  --accent:#0e7a70; --accent-ink:#ffffff; --soft:#eaf2f0;
+  --turn:#0e7a70; --speak:#ac5128;
+  --band:#0e7a70; --band-ink:#ffffff; --band-muted:#e3f3f0; --ring:#ffffff;
+  --frame:#181c1b; --navcta:#0b5d56; --label:#0b5d56;
+  --display:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;
+  --body:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;
+  --mono:"Spline Sans Mono",ui-monospace,Menlo,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0f1220; --tint:#141831; --paper:#171b2d; --ink:#eef0f8; --muted:#a8aec6; --line:#2a3049;
-  --accent:#8ea3ff; --accent-ink:#0f1220; --soft:#222a4a;
-  --turn:#5ccb98; --speak:#f0a65a;
-  --band:#1d2c8c; --band-ink:#ffffff; --band-muted:#c8d1ff; --ring:#ffffff; color-scheme:dark}}
+  --bg:#0e1312; --tint:#121817; --paper:#161c1b; --ink:#eaf0ee; --muted:#97a19d; --line:#242c2a;
+  --accent:#38c0b2; --accent-ink:#06211e; --soft:#14211f;
+  --turn:#38c0b2; --speak:#de8756;
+  --band:#0b4a44; --band-ink:#ffffff; --band-muted:#cfe9e5; --ring:#ffffff;
+  --frame:#000000; --navcta:#0b4a44; --label:#38c0b2; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0f1220; --tint:#141831; --paper:#171b2d; --ink:#eef0f8; --muted:#a8aec6; --line:#2a3049;
-  --accent:#8ea3ff; --accent-ink:#0f1220; --soft:#222a4a;
-  --turn:#5ccb98; --speak:#f0a65a;
-  --band:#1d2c8c; --band-ink:#ffffff; --band-muted:#c8d1ff; --ring:#ffffff; color-scheme:dark}
+  --bg:#0e1312; --tint:#121817; --paper:#161c1b; --ink:#eaf0ee; --muted:#97a19d; --line:#242c2a;
+  --accent:#38c0b2; --accent-ink:#06211e; --soft:#14211f;
+  --turn:#38c0b2; --speak:#de8756;
+  --band:#0b4a44; --band-ink:#ffffff; --band-muted:#cfe9e5; --ring:#ffffff;
+  --frame:#000000; --navcta:#0b4a44; --label:#38c0b2; color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);margin:0;font-size:17px;line-height:1.55}
 .wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
 h1,h2,h3{font-family:var(--display);letter-spacing:-.015em;text-wrap:balance;margin:0}
-h1{font-weight:800;font-size:clamp(40px,6vw,66px);line-height:1.03}
-h2{font-weight:800;font-size:clamp(30px,4vw,44px);line-height:1.08}
+h1{font-weight:700;font-size:clamp(40px,6vw,66px);line-height:1.03}
+h2{font-weight:700;font-size:clamp(30px,4vw,44px);line-height:1.08}
 h3{font-weight:700;font-size:21px;line-height:1.2}
 p{margin:0}
-.eyebrow{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.eyebrow{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--label)}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
 .band :focus-visible,.final :focus-visible{outline-color:var(--ring)}
@@ -61,23 +65,23 @@ a{color:inherit}
 .deco{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .deco::after{content:"";position:absolute;right:-180px;top:-120px;width:620px;height:620px;border-radius:50%;border:2px solid rgba(255,255,255,.12);box-shadow:0 0 0 70px rgba(255,255,255,.04),0 0 0 140px rgba(255,255,255,.03)}
 .top{display:flex;align-items:center;justify-content:space-between;padding-block:16px;position:relative;z-index:1}
-.mark{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:21px;text-decoration:none;min-height:44px}
+.mark{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:21px;text-decoration:none;min-height:44px}
 .mark svg{width:24px;height:24px;flex:none}
 .navlinks{display:flex;gap:6px;align-items:center;font-size:15px;font-weight:600}
 .navlinks a{text-decoration:none;opacity:.9;min-height:44px;display:inline-flex;align-items:center;padding-inline:10px;border-radius:999px}
 .navlinks a:hover{opacity:1}
-.navcta{background:#fff;color:#1c34a3;padding-inline:18px!important;opacity:1!important;margin-left:8px}
+.navcta{background:#fff;color:var(--navcta);padding-inline:18px!important;opacity:1!important;margin-left:8px}
 .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-block:28px 0;position:relative;z-index:1}
 .hero .lead{font-size:20px;color:var(--band-muted);max-width:36ch;margin-top:20px}
 .stores{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.store{display:flex;flex-direction:column;justify-content:center;min-width:176px;min-height:56px;padding:9px 20px;border-radius:14px;background:#0b0f22;color:#fff;border:1px solid rgba(255,255,255,.2)}
+.store{display:flex;flex-direction:column;justify-content:center;min-width:176px;min-height:56px;padding:9px 20px;border-radius:14px;background:var(--frame);color:#fff;border:1px solid rgba(255,255,255,.2)}
 .store small{font-size:12px;opacity:.82}
 .store b{font-family:var(--display);font-size:20px;font-weight:700;line-height:1.1}
 .note{font-size:15px;color:var(--band-muted);margin-top:14px}
 .hero-phone{align-self:end;justify-self:center;margin-bottom:-90px}
 
 /* phone frame and the app's own screen parts */
-.phone{width:300px;height:620px;background:var(--paper);color:var(--ink);border:9px solid #0b0f22;border-radius:42px;box-shadow:0 30px 60px rgba(8,12,40,.28);overflow:hidden;display:flex;flex-direction:column;font-size:14px;line-height:1.45;flex:none}
+.phone{width:300px;height:620px;background:var(--paper);color:var(--ink);border:9px solid var(--frame);border-radius:42px;box-shadow:0 30px 60px rgba(10,24,22,.28);overflow:hidden;display:flex;flex-direction:column;font-size:14px;line-height:1.45;flex:none}
 .status{display:flex;justify-content:space-between;padding:12px 22px 0;font-family:var(--mono);font-size:11px;color:var(--muted)}
 .screen{flex:1;display:flex;flex-direction:column;padding:14px 18px 16px;gap:12px;min-height:0}
 .s-title{font-family:var(--display);font-weight:700;font-size:21px;line-height:1.15;letter-spacing:-.01em}
@@ -104,13 +108,13 @@ a{color:inherit}
 .ring::before{content:"";position:absolute;inset:0;border-radius:50%;border:3px solid currentColor;opacity:.25}
 .ring::after{content:"";position:absolute;inset:14px;border-radius:50%;border:3px solid currentColor;opacity:.5}
 .ring b{width:66px;height:66px;border-radius:50%;background:currentColor}
-.state{font-family:var(--display);font-weight:800;font-size:24px}
+.state{font-family:var(--display);font-weight:700;font-size:24px}
 .coach{background:var(--soft);border-radius:11px;padding:9px 11px;font-size:13px}
 .coach b{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
 .cap{border-left:3px solid var(--line);padding:3px 9px;font-size:12.5px;color:var(--muted)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .two .btn{font-size:13.5px;white-space:nowrap;padding-inline:6px}
-.score{display:flex;align-items:baseline;gap:4px;font-family:var(--display);font-weight:800}
+.score{display:flex;align-items:baseline;gap:4px;font-family:var(--display);font-weight:700}
 .score .n{font-size:46px;line-height:1;letter-spacing:-.03em}
 .score .d{font-size:15px;color:var(--muted)}
 .mk{display:grid;grid-template-columns:76px 1fr 24px;gap:7px;align-items:center;font-size:12px}
@@ -121,8 +125,8 @@ a{color:inherit}
 .snd div{border:1px solid var(--line);border-radius:10px;padding:6px 8px}
 .snd b{display:block;font-family:var(--mono);font-size:13px}
 .snd span{font-size:10px;color:var(--muted)}
-.video{aspect-ratio:16/9;border-radius:12px;background:#0b0f22;border:1px solid var(--line);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font-size:11px}
-.video span:first-child{width:38px;height:38px;border-radius:50%;background:#2a4bd7;display:grid;place-items:center;font-size:13px;color:#fff}
+.video{aspect-ratio:16/9;border-radius:12px;background:var(--frame);border:1px solid var(--line);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font-size:11px}
+.video span:first-child{width:38px;height:38px;border-radius:50%;background:var(--accent);display:grid;place-items:center;font-size:13px;color:var(--accent-ink)}
 
 /* sections */
 section{padding-block:96px}
@@ -183,7 +187,7 @@ footer .links a:hover{text-decoration:underline}
   <div class="wrap">
     <div class="top">
       <a class="mark" href="#top" aria-label="Debate Coach, back to the top">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2.5" fill="currentColor"/></svg>
+        <svg viewBox="6 6 36 36" aria-hidden="true"><path d="M37.1 33.2 A16 16 0 1 1 37.1 14.8" fill="none" stroke="currentColor" stroke-opacity=".55" stroke-width="4" stroke-linecap="round"/><circle cx="24" cy="24" r="8" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="24" cy="24" r="3" fill="currentColor"/></svg>
         Debate Coach
       </a>
       <nav class="navlinks" aria-label="Main">
@@ -370,7 +374,7 @@ footer .links a:hover{text-decoration:underline}
     <div class="phone" role="img" aria-label="The home screen. Today's practice is a four-minute rebuttal drill, suggested from the last report.">
       <div class="status"><span>9:41</span><span>●●● ▮</span></div>
       <div class="screen">
-        <div style="font-family:var(--display);font-weight:800;font-size:16px">Debate Coach</div>
+        <div style="font-family:var(--display);font-weight:700;font-size:16px">Debate Coach</div>
         <div class="s-title">Hi Ana. Ready for today?</div>
         <div class="card soft"><span class="lab">Today's practice</span><div class="s-sub">Rebuttal drill, 4 minutes</div><div class="m">Your last report said your rebuttals name the point but not why it fails.</div><div class="btn" style="padding:8px 14px;font-size:13px;align-self:flex-start">Start</div></div>
         <span class="lab">Or choose</span>

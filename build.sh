@@ -4,7 +4,7 @@
 #   mockup.html  the same content for the review artifact (no document wrapper)
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")"
-FONTS='<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">'
+FONTS='<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@500;600&display=swap">'
 TITLE='Debate Coach: learn to argue in English, out loud'
 DESC='Learn to argue in English, out loud. Conversations, speeches, drills and full debates with a coach who listens, with notes in your family'\''s language. Coming to iPhone and Android.'
 {
@@ -16,7 +16,7 @@ DESC='Learn to argue in English, out loud. Conversations, speeches, drills and f
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>$TITLE</title>
 <meta name="description" content="$DESC">
-<meta name="theme-color" content="#2a4bd7">
+<meta name="theme-color" content="#0e7a70">
 <link rel="canonical" href="https://debatecoach.app/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
