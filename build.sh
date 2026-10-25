@@ -5,8 +5,8 @@
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")"
 FONTS='<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">'
-TITLE='Debate Coach: practise debating with a coach who listens'
-DESC='Argue out loud against an AI opponent. Your coach chairs the round, keeps the time, and tells you the one thing to change next time. Coming to iPhone and Android.'
+TITLE='Debate Coach: learn to argue in English, out loud'
+DESC='Learn to argue in English, out loud. Conversations, speeches, drills and full debates with a coach who listens, with notes in your family'\''s language. Coming to iPhone and Android.'
 {
   cat <<EOF
 <!doctype html>
