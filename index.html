@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Debate Coach: speak like a debater, three minutes a day</title>
-<meta name="description" content="Sam is a coach who listens. Say your point out loud, and the moment you stop, Sam tells you what worked and the one thing to change. Coming to iPhone and Android.">
+<meta name="description" content="Your coach listens to every word. Say your point out loud, and the moment you stop, you hear what worked and the one thing to change. Coming to iPhone and Android.">
 <meta name="theme-color" content="#24252a">
 <link rel="canonical" href="https://debatecoach.app/">
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://debatecoach.app/">
 <meta property="og:title" content="Debate Coach: speak like a debater, three minutes a day">
 <meta property="og:image:alt" content="Debate Coach. Speak like a debater, three minutes a day.">
-<meta property="og:description" content="Sam is a coach who listens. Say your point out loud, and the moment you stop, Sam tells you what worked and the one thing to change. Coming to iPhone and Android.">
+<meta property="og:description" content="Your coach listens to every word. Say your point out loud, and the moment you stop, you hear what worked and the one thing to change. Coming to iPhone and Android.">
 <meta property="og:image" content="https://debatecoach.app/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap">
@@ -23,7 +23,7 @@
 <body>
 <style>
 /* Debate Coach (s385): Duolingo's standard of a landing page. Few words, one picture per idea, one button colour,
-   Sam (the logo's speech-bubble face) in every scene. Charcoal and white from the logo; teal for "go", rust for the
+   the coach (the logo's speech-bubble face) in every scene. Charcoal and white from the logo; teal for "go", rust for the
    other side, a warm yellow for streaks and celebration. Nunito for everything: rounded, heavy headings. */
 :root{
   --bg:#ffffff; --tint:#f4f3f0; --paper:#ffffff; --ink:#24252a; --muted:#5b5d66; --line:#e6e4df;
@@ -65,14 +65,20 @@ a{color:inherit}
 
 /* top bar */
 .top{display:flex;align-items:center;justify-content:space-between;padding-block:14px;border-bottom:2px solid var(--line)}
-.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:22px;text-decoration:none;min-height:44px;color:var(--ink)}
+.brand{white-space:nowrap;display:flex;align-items:center;gap:10px;font-weight:900;font-size:22px;text-decoration:none;min-height:44px;color:var(--ink)}
 .brand svg{width:36px;height:36px;flex:none}
 .navlinks{display:flex;gap:4px;align-items:center;font-size:15px;font-weight:800}
 .navlinks a{text-decoration:none;min-height:44px;display:inline-flex;align-items:center;padding-inline:12px;border-radius:12px;color:var(--muted)}
 .navlinks a:hover{color:var(--ink);background:var(--tint)}
 
+.theme{flex:none;width:44px;height:44px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;margin-left:6px}
+.theme:hover{background:var(--tint)}
+.theme svg{width:20px;height:20px}
+.theme .sun{display:none}
+:root[data-theme="dark"] .theme .sun{display:block}:root[data-theme="dark"] .theme .moon{display:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .theme .sun{display:block}:root:not([data-theme="light"]) .theme .moon{display:none}}
 /* the button: one colour, a pressed edge like a key */
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:16px;background:var(--go);color:var(--go-ink);font-weight:900;font-size:16px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;box-shadow:0 4px 0 var(--go-edge);transition:transform .08s, box-shadow .08s}
+.btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:16px;background:var(--go);color:var(--go-ink);font-weight:900;font-size:16px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;box-shadow:0 4px 0 var(--go-edge);transition:transform .08s, box-shadow .08s}
 .btn:active{transform:translateY(4px);box-shadow:0 0 0 var(--go-edge)}
 .navlinks .btn{min-height:44px;padding:0 18px;font-size:14px;color:var(--go-ink);margin-left:8px}
 .navlinks .btn:hover{background:var(--go);color:var(--go-ink)}
@@ -85,7 +91,7 @@ a{color:inherit}
 .store svg{width:24px;height:24px;flex:none}
 .store span{display:flex;flex-direction:column;line-height:1.15}
 .store small{font-size:12px;opacity:.85;font-weight:700}
-.store b{font-size:19px;font-weight:900}
+.store b{font-size:19px;font-weight:900;white-space:nowrap}
 .note{font-size:15px;color:var(--muted);margin-top:14px;font-weight:700}
 .scene{width:100%;height:auto;display:block}
 .bob{animation:bob 3.2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
@@ -187,7 +193,11 @@ footer .links a:hover{color:var(--ink)}
   .cards,.faq{grid-template-columns:1fr}
 }
 @media (max-width:420px){
-  .store{min-width:0;flex:1 1 150px}
+  .brand{font-size:18px;gap:8px}
+  .brand svg{width:32px;height:32px}
+  .navlinks .btn{padding:0 12px;font-size:13px;letter-spacing:.04em}
+  .store{min-width:0;flex:1 1 150px;padding:8px 12px}
+  .store b{font-size:17px}
   .float{display:none}
 }
 </style>
@@ -216,8 +226,10 @@ footer .links a:hover{color:var(--ink)}
   </a>
   <nav class="navlinks" aria-label="Main">
     <a href="#daily">How it works</a>
-    <a href="#students">For parents</a>
+    <a href="#languages">Languages</a>
+    <a href="#private">Privacy</a>
     <a href="#faq">Questions</a>
+    <button class="theme" id="theme-toggle" type="button" aria-label="Switch to dark mode"><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="currentColor"/></svg><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></svg></button>
     <a class="btn" href="#get">Get the app</a>
   </nav>
 </header>
@@ -226,14 +238,14 @@ footer .links a:hover{color:var(--ink)}
 <div class="wrap hero" id="top">
   <div>
     <h1>Speak like a debater, three minutes a day.</h1>
-    <p class="lead">Sam is a coach who listens. Say your point out loud, and the moment you stop, Sam tells you what worked and the one thing to change.</p>
+    <p class="lead">Your coach listens to every word. Say your point out loud, and the moment you stop, you hear what worked and the one thing to change.</p>
     <div class="stores" role="list" aria-label="Where to get the app">
       <div class="store" role="listitem"><svg aria-hidden="true"><use href="#apple"/></svg><span><small>Coming soon</small><b>App Store</b></span></div>
       <div class="store" role="listitem"><svg aria-hidden="true"><use href="#play"/></svg><span><small>Coming soon</small><b>Google Play</b></span></div>
     </div>
     <p class="note">For iPhone and Android, in eight languages.</p>
   </div>
-  <svg class="scene" viewBox="0 0 520 440" role="img" aria-label="Sam, the coach, speaking up with a timer and a streak flame beside them, while a rust-coloured opponent waits for its turn.">
+  <svg class="scene" viewBox="0 0 520 440" role="img" aria-label="The coach speaking up with a timer and a streak flame beside them, while a rust-coloured opponent waits for its turn.">
     <circle cx="270" cy="230" r="190" fill="var(--tint)"/>
     <g class="bob"><svg x="185" y="70" width="250" height="250"><use href="#sam-talk"/></svg></g>
     <g fill="none" stroke="var(--go)" stroke-width="7" stroke-linecap="round"><path d="M448 150 q22 30 0 60"/><path d="M472 128 q38 52 0 104"/></g>
@@ -247,10 +259,11 @@ footer .links a:hover{color:var(--ink)}
 <div class="goals" aria-label="What people practise for">
   <div class="wrap">
     <span class="lab">Practise for</span>
-    <span class="pill"><i style="background:var(--go)"></i>Class presentations</span>
-    <span class="pill"><i style="background:var(--rust)"></i>Debate club</span>
+    <span class="pill"><i style="background:var(--go)"></i>Presentations</span>
+    <span class="pill"><i style="background:var(--rust)"></i>Debate rounds</span>
     <span class="pill"><i style="background:var(--sun)"></i>Interviews</span>
     <span class="pill"><i style="background:var(--ink)"></i>Speaking English</span>
+    <span class="pill"><i style="background:var(--go)"></i>Meetings</span>
   </div>
 </div>
 
@@ -259,10 +272,10 @@ footer .links a:hover{color:var(--ink)}
     <div class="copy">
       <span class="kicker">Every day</span>
       <h2 id="daily-h">Three minutes is enough.</h2>
-      <p>Each day Sam picks one short task from your last practice, like answering an argument or giving your opinion in a minute. Do one and your streak grows.</p>
+      <p>Each day your coach picks one short task from your last practice, like answering an argument or giving your opinion in a minute. Do one and your streak grows.</p>
     </div>
     <div class="art">
-      <div class="phone" role="img" aria-label="The home screen. A five-day streak, two of three minutes done today, and Sam's task for today: answer one argument about banning homework, with a Start button.">
+      <div class="phone" role="img" aria-label="The home screen. A five-day streak, two of three minutes done today, and today's task: answer one argument about banning homework, with a Start button.">
         <div class="screen">
           <div style="display:flex;justify-content:space-between;align-items:center"><span class="s-h">Hi Mia</span><span class="chips"><span class="chip sun"><svg width="14" height="14" aria-hidden="true"><use href="#flame"/></svg>5</span><span class="chip">2 of 3 min</span></span></div>
           <div class="s-today">
@@ -285,10 +298,10 @@ footer .links a:hover{color:var(--ink)}
     <div class="copy">
       <span class="kicker">The moment you stop</span>
       <h2 id="finish-h">No waiting for a verdict.</h2>
-      <p>Sam says what you did well and what to change as soon as you finish. Your full report follows about two minutes later, down to how fast you spoke and how often you said "um".</p>
+      <p>Your coach says what you did well and what to change as soon as you finish. Your full report follows about two minutes later, down to how fast you spoke and how often you said "um".</p>
     </div>
     <div class="art">
-      <div class="phone" role="img" aria-label="The end of a practice. Sam cheers and says the reason was clear and to add an example next time. Two chips read Gave a reason and Add an example, and the streak reaches day one.">
+      <div class="phone" role="img" aria-label="The end of a practice. The coach cheers and says the reason was clear and to add an example next time. Two chips read Gave a reason and Add an example, and the streak reaches day one.">
         <div class="screen" style="align-items:stretch">
           <div style="display:flex;justify-content:center;padding-top:6px"><svg width="110" height="110" aria-hidden="true"><use href="#sam-cheer"/></svg></div>
           <div style="text-align:center;font-weight:900;font-size:24px">Nice one</div>
@@ -309,13 +322,13 @@ footer .links a:hover{color:var(--ink)}
     <div class="copy">
       <span class="kicker">Built on debate</span>
       <h2 id="path-h">The structure debaters use, for every conversation.</h2>
-      <p>Say your point, give a reason, add an example and answer the other side. Your path fills in as Sam hears each one. When you're ready, take on AI speakers in World Schools, British Parliamentary, Public Forum or Lincoln-Douglas.</p>
+      <p>Say your point, give a reason, add an example and answer the other side. Your path fills in as your coach hears each one. When you're ready, take on AI speakers in World Schools, British Parliamentary, Public Forum or Lincoln-Douglas.</p>
     </div>
     <div class="art">
       <div class="phone" role="img" aria-label="Your path. Say your point first and Give a reason are done, Add an example is where you are, and Answer the other side and Sum up in one line are still to come.">
         <div class="screen">
           <div class="s-h">Your path</div>
-          <div style="font-size:12.5px;color:var(--muted);font-weight:700;margin-top:-6px">A skill fills in when Sam hears it.</div>
+          <div style="font-size:12.5px;color:var(--muted);font-weight:700;margin-top:-6px">A skill fills in when your coach hears it.</div>
           <div class="path">
             <div class="node"><span class="dot done"><svg width="22" height="22" aria-hidden="true"><use href="#tick"/></svg></span><div><b>Say your point first</b><span>Heard in 4 practices</span></div></div>
             <div class="node" style="margin-left:34px"><span class="dot done"><svg width="22" height="22" aria-hidden="true"><use href="#tick"/></svg></span><div><b>Give a reason</b><span>Heard in 3 practices</span></div></div>
@@ -334,11 +347,11 @@ footer .links a:hover{color:var(--ink)}
   <div class="wrap row flip">
     <div class="copy">
       <span class="kicker">Your family's language</span>
-      <h2 id="lang-h">Practise in English. Read Sam's notes in yours.</h2>
-      <p>Every note comes in English with your language beside it, so a parent reading over your shoulder knows what to work on too. 简体中文, 繁體中文, 한국어, 日本語, Tiếng Việt, Español and Português.</p>
+      <h2 id="lang-h">Practise in English. Read your coach's notes in yours.</h2>
+      <p>Every note comes in English with your language beside it, so you always know exactly what to work on, and so does anyone helping you. 简体中文, 繁體中文, 한국어, 日本語, Tiếng Việt, Español and Português.</p>
     </div>
     <div class="art">
-      <div class="phone" role="img" aria-label="A report with Sam's notes in English and Simplified Chinese beneath each one.">
+      <div class="phone" role="img" aria-label="A report with the coach's notes in English and Simplified Chinese beneath each one.">
         <div class="screen" lang="zh-Hans">
           <div class="s-h">你的报告</div>
           <div style="font-size:12.5px;color:var(--muted);font-weight:700;margin-top:-6px" lang="en">Speech, 2 minutes</div>
@@ -359,17 +372,17 @@ footer .links a:hover{color:var(--ink)}
   </div>
 </section>
 
-<section id="students" aria-labelledby="students-h">
+<section id="private" aria-labelledby="private-h">
   <div class="wrap">
     <div class="center">
       <svg width="88" height="88" aria-hidden="true"><use href="#sam-smile"/></svg>
-      <h2 id="students-h">Made for students.</h2>
-      <p>Debate Coach is for ages 13 and up. Nobody else is in the room, so a parent never has to wonder who their child is talking to.</p>
+      <h2 id="private-h">Practise without an audience.</h2>
+      <p>Nobody else is in the room, so you can get it wrong as often as you need to. Get it right here first, then say it to the room that matters.</p>
     </div>
     <div class="cards">
-      <div class="card"><svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="12" fill="var(--go-soft)"/><circle cx="22" cy="18" r="6" fill="none" stroke="var(--go)" stroke-width="3"/><path d="M11 35c2-6 6-8 11-8s9 2 11 8" stroke="var(--go)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><h3>AI only</h3><p>Sam and your opponents are AI. There's no chat and no public profile.</p></div>
-      <div class="card"><svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="12" fill="var(--sun-soft)"/><rect x="14" y="20" width="16" height="13" rx="3" fill="none" stroke="var(--ink)" stroke-width="3"/><path d="M17 20v-4a5 5 0 0 1 10 0v4" stroke="var(--ink)" stroke-width="3" fill="none"/></svg><h3>Recordings stay private</h3><p>Each practice is recorded so Sam can write the report. It stays in your account.</p></div>
-      <div class="card"><svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="12" fill="var(--rust-soft)"/><rect x="11" y="14" width="22" height="16" rx="3" fill="none" stroke="var(--rust)" stroke-width="3"/><path d="M12 16l10 7 10-7" stroke="var(--rust)" stroke-width="3" fill="none" stroke-linejoin="round"/></svg><h3>A weekly note</h3><p>Turn on a note to a parent each week: what was practised, for how long, and what Sam is working on.</p></div>
+      <div class="card"><svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="12" fill="var(--go-soft)"/><circle cx="22" cy="18" r="6" fill="none" stroke="var(--go)" stroke-width="3"/><path d="M11 35c2-6 6-8 11-8s9 2 11 8" stroke="var(--go)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><h3>AI only</h3><p>Your coach and your opponents are AI. There's no chat and no public profile.</p></div>
+      <div class="card"><svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="12" fill="var(--sun-soft)"/><rect x="14" y="20" width="16" height="13" rx="3" fill="none" stroke="var(--ink)" stroke-width="3"/><path d="M17 20v-4a5 5 0 0 1 10 0v4" stroke="var(--ink)" stroke-width="3" fill="none"/></svg><h3>Recordings stay private</h3><p>Each practice is recorded so your coach can write the report. It stays in your account.</p></div>
+      <div class="card"><svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="12" fill="var(--rust-soft)"/><rect x="11" y="14" width="22" height="16" rx="3" fill="none" stroke="var(--rust)" stroke-width="3"/><path d="M12 16l10 7 10-7" stroke="var(--rust)" stroke-width="3" fill="none" stroke-linejoin="round"/></svg><h3>A weekly note</h3><p>Send a summary each week to a parent or a coach: what you practised, for how long, and what to work on next.</p></div>
     </div>
   </div>
 </section>
@@ -379,14 +392,14 @@ footer .links a:hover{color:var(--ink)}
     <div class="center"><h2 id="faq-h">Questions</h2></div>
     <div class="faq">
       <div style="display:flex;flex-direction:column;gap:12px">
-        <details open><summary>Who is Debate Coach for?</summary><p>It's for students who want to speak up with confidence, whether that's in class, at an interview, in English as a second language or in a debate round.</p></details>
-        <details><summary>Do I need debate experience?</summary><p>No. Sam starts with one question and one minute, and builds from there. Full debates are there when you want them.</p></details>
+        <details open><summary>Who is Debate Coach for?</summary><p>It's for anyone who wants to get better at debating or speak more clearly, from a first presentation to a World Schools round, a job interview or a meeting in English. You need to be 13 or older.</p></details>
+        <details><summary>Do I need debate experience?</summary><p>No. Your coach starts with one question and one minute, and builds from there. Full debates are there when you want them.</p></details>
         <details><summary>What do I need?</summary><p>You need a phone and a quiet place to talk. Earphones help, but you don't need them.</p></details>
-        <details><summary>Do I talk to other people?</summary><p>No. Sam and your opponents are AI, so you can practise whenever you like.</p></details>
+        <details><summary>Do I talk to other people?</summary><p>No. Your coach and your opponents are AI, so you can practise whenever you like.</p></details>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px">
         <details><summary>How much does it cost?</summary><p>Prices will be in the App Store and Google Play when the app launches.</p></details>
-        <details><summary>Which languages does it support?</summary><p>You always practise in English. The app and Sam's notes also come in Simplified and Traditional Chinese, Korean, Japanese, Vietnamese, Spanish and Portuguese.</p></details>
+        <details><summary>Which languages does it support?</summary><p>You always practise in English. The app and your coach's notes also come in Simplified and Traditional Chinese, Korean, Japanese, Vietnamese, Spanish and Portuguese.</p></details>
         <details><summary>Which debate formats are there?</summary><p>World Schools, British Parliamentary, Public Forum and Lincoln-Douglas, among others, with AI speakers in every other seat.</p></details>
         <details><summary>When can I get it?</summary><p>Debate Coach is in testing now. It's coming to iPhone and Android.</p></details>
       </div>
@@ -410,8 +423,26 @@ footer .links a:hover{color:var(--ink)}
 <footer>
   <div class="wrap">
     <span>© 2026 Debate Coach</span>
-    <nav class="links" aria-label="Footer"><a href="#daily">How it works</a><a href="#students">For parents</a><a href="#faq">Questions</a></nav>
+    <nav class="links" aria-label="Footer"><a href="#daily">How it works</a><a href="#languages">Languages</a><a href="#private">Privacy</a><a href="#faq">Questions</a></nav>
   </div>
 </footer>
+
+<script>
+// Light or dark: the visitor's own choice wins over the system setting, and is remembered on this device.
+(function () {
+  var root = document.documentElement, btn = document.getElementById('theme-toggle');
+  function isDark() { return root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; }
+  function label() { btn.setAttribute('aria-label', isDark() ? 'Switch to light mode' : 'Switch to dark mode'); }
+  try { var saved = localStorage.getItem('dc-theme'); if (saved === 'light' || saved === 'dark') root.dataset.theme = saved; } catch (e) {}
+  label();
+  btn.addEventListener('click', function () {
+    var next = isDark() ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try { localStorage.setItem('dc-theme', next); } catch (e) {}
+    label();
+  });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', label);
+})();
+</script>
 </body>
 </html>

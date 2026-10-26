@@ -6,7 +6,7 @@ set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")"
 FONTS='<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap">'
 TITLE='Debate Coach: speak like a debater, three minutes a day'
-DESC='Sam is a coach who listens. Say your point out loud, and the moment you stop, Sam tells you what worked and the one thing to change. Coming to iPhone and Android.'
+DESC='Your coach listens to every word. Say your point out loud, and the moment you stop, you hear what worked and the one thing to change. Coming to iPhone and Android.'
 {
   cat <<EOF
 <!doctype html>
