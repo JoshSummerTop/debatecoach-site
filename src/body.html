@@ -1,425 +1,392 @@
 <style>
-/* Layout: one teal hero band carrying the practice room; below it, quiet sections that each pair a sentence with the screen that proves it.
-   Palette and faces are Shadow Judge's (warm paper, ink, teal, rust; Instrument Sans, Spline Sans Mono). Your turn speaks teal, the opponent rust, as Proposition and Opposition do there. */
+/* Debate Coach (s385): Duolingo's standard of a landing page. Few words, one picture per idea, one button colour,
+   Sam (the logo's speech-bubble face) in every scene. Charcoal and white from the logo; teal for "go", rust for the
+   other side, a warm yellow for streaks and celebration. Nunito for everything: rounded, heavy headings. */
 :root{
-  --bg:#f6f6f3; --tint:#edede8; --paper:#ffffff; --ink:#181c1b; --muted:#5d6560; --line:#e2e2db;
-  --accent:#0e7a70; --accent-ink:#ffffff; --soft:#eaf2f0;
-  --turn:#0e7a70; --speak:#ac5128;
-  --band:#0e7a70; --band-ink:#ffffff; --band-muted:#e3f3f0; --ring:#ffffff;
-  --frame:#181c1b; --navcta:#0b5d56; --label:#0b5d56;
-  --display:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;
-  --body:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;
-  --mono:"Spline Sans Mono",ui-monospace,Menlo,monospace;
+  --bg:#ffffff; --tint:#f4f3f0; --paper:#ffffff; --ink:#24252a; --muted:#5b5d66; --line:#e6e4df;
+  --go:#0b7d71; --go-edge:#075a52; --go-ink:#ffffff; --go-soft:#e7f4f1; --go-text:#0a6a60;
+  --rust:#c2552b; --rust-soft:#fbeee7; --rust-text:#a8441c;
+  --sun:#f2b33d; --sun-soft:#fdf3dc;
+  --sam:#24252a; --sam-face:#ffffff;
+  --frame:#24252a; --screen:#ffffff; --shadow:0 18px 40px rgba(36,37,42,.12);
+  --font:"Nunito",ui-rounded,"SF Pro Rounded",system-ui,sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0e1312; --tint:#121817; --paper:#161c1b; --ink:#eaf0ee; --muted:#97a19d; --line:#242c2a;
-  --accent:#38c0b2; --accent-ink:#06211e; --soft:#14211f;
-  --turn:#38c0b2; --speak:#de8756;
-  --band:#0b4a44; --band-ink:#ffffff; --band-muted:#cfe9e5; --ring:#ffffff;
-  --frame:#000000; --navcta:#0b4a44; --label:#38c0b2; color-scheme:dark}}
+  --bg:#17181c; --tint:#1f2026; --paper:#202127; --ink:#f4f3f0; --muted:#b3b1ab; --line:#2f3038;
+  --go:#0b7d71; --go-edge:#064a44; --go-ink:#ffffff; --go-soft:#16302d; --go-text:#5fd3c3;
+  --rust:#d96a3e; --rust-soft:#3a241b; --rust-text:#f0a07c;
+  --sun:#f2b33d; --sun-soft:#3a3020;
+  --sam:#f4f3f0; --sam-face:#24252a;
+  --frame:#0c0d10; --screen:#202127; --shadow:0 18px 40px rgba(0,0,0,.45); color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0e1312; --tint:#121817; --paper:#161c1b; --ink:#eaf0ee; --muted:#97a19d; --line:#242c2a;
-  --accent:#38c0b2; --accent-ink:#06211e; --soft:#14211f;
-  --turn:#38c0b2; --speak:#de8756;
-  --band:#0b4a44; --band-ink:#ffffff; --band-muted:#cfe9e5; --ring:#ffffff;
-  --frame:#000000; --navcta:#0b4a44; --label:#38c0b2; color-scheme:dark}
+  --bg:#17181c; --tint:#1f2026; --paper:#202127; --ink:#f4f3f0; --muted:#b3b1ab; --line:#2f3038;
+  --go:#0b7d71; --go-edge:#064a44; --go-ink:#ffffff; --go-soft:#16302d; --go-text:#5fd3c3;
+  --rust:#d96a3e; --rust-soft:#3a241b; --rust-text:#f0a07c;
+  --sun:#f2b33d; --sun-soft:#3a3020;
+  --sam:#f4f3f0; --sam-face:#24252a;
+  --frame:#0c0d10; --screen:#202127; --shadow:0 18px 40px rgba(0,0,0,.45); color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);margin:0;font-size:17px;line-height:1.55}
-.wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-h1,h2,h3{font-family:var(--display);letter-spacing:-.015em;text-wrap:balance;margin:0}
-h1{font-weight:700;font-size:clamp(40px,6vw,66px);line-height:1.03}
-h2{font-weight:700;font-size:clamp(30px,4vw,44px);line-height:1.08}
-h3{font-weight:700;font-size:21px;line-height:1.2}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important}}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{margin:0;font-weight:900;letter-spacing:-.01em;text-wrap:balance}
+h1{font-size:clamp(40px,5.6vw,60px);line-height:1.06}
+h2{font-size:clamp(32px,4.2vw,46px);line-height:1.1}
+h3{font-size:21px;line-height:1.25;font-weight:800}
 p{margin:0}
-.eyebrow{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--label)}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
-.band :focus-visible,.final :focus-visible{outline-color:var(--ring)}
-.skip{position:absolute;left:12px;top:-60px;background:var(--paper);color:var(--ink);padding:12px 16px;border-radius:10px;z-index:5;font-weight:700}
+:focus-visible{outline:3px solid var(--go);outline-offset:3px;border-radius:10px}
+.skip{position:absolute;left:12px;top:-60px;background:var(--paper);color:var(--ink);padding:12px 16px;border-radius:12px;z-index:5;font-weight:800}
 .skip:focus{top:12px}
 
-/* hero band */
-.band{background:var(--band);color:var(--band-ink);position:relative;z-index:2}
-.deco{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-.deco::after{content:"";position:absolute;right:-180px;top:-120px;width:620px;height:620px;border-radius:50%;border:2px solid rgba(255,255,255,.12);box-shadow:0 0 0 70px rgba(255,255,255,.04),0 0 0 140px rgba(255,255,255,.03)}
-.top{display:flex;align-items:center;justify-content:space-between;padding-block:16px;position:relative;z-index:1}
-.mark{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:21px;text-decoration:none;min-height:44px}
-.mark svg{width:24px;height:24px;flex:none}
-.navlinks{display:flex;gap:6px;align-items:center;font-size:15px;font-weight:600}
-.navlinks a{text-decoration:none;opacity:.9;min-height:44px;display:inline-flex;align-items:center;padding-inline:10px;border-radius:999px}
-.navlinks a:hover{opacity:1}
-.navcta{background:#fff;color:var(--navcta);padding-inline:18px!important;opacity:1!important;margin-left:8px}
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-block:28px 0;position:relative;z-index:1}
-.hero .lead{font-size:20px;color:var(--band-muted);max-width:36ch;margin-top:20px}
+/* top bar */
+.top{display:flex;align-items:center;justify-content:space-between;padding-block:14px;border-bottom:2px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:22px;text-decoration:none;min-height:44px;color:var(--ink)}
+.brand svg{width:36px;height:36px;flex:none}
+.navlinks{display:flex;gap:4px;align-items:center;font-size:15px;font-weight:800}
+.navlinks a{text-decoration:none;min-height:44px;display:inline-flex;align-items:center;padding-inline:12px;border-radius:12px;color:var(--muted)}
+.navlinks a:hover{color:var(--ink);background:var(--tint)}
+
+/* the button: one colour, a pressed edge like a key */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:16px;background:var(--go);color:var(--go-ink);font-weight:900;font-size:16px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;box-shadow:0 4px 0 var(--go-edge);transition:transform .08s, box-shadow .08s}
+.btn:active{transform:translateY(4px);box-shadow:0 0 0 var(--go-edge)}
+.navlinks .btn{min-height:44px;padding:0 18px;font-size:14px;color:var(--go-ink);margin-left:8px}
+.navlinks .btn:hover{background:var(--go);color:var(--go-ink)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding-block:56px 64px}
+.hero .lead{font-size:20px;color:var(--muted);max-width:34ch;margin-top:18px;font-weight:600}
 .stores{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.store{display:flex;flex-direction:column;justify-content:center;min-width:176px;min-height:56px;padding:9px 20px;border-radius:14px;background:var(--frame);color:#fff;border:1px solid rgba(255,255,255,.2)}
-.store small{font-size:12px;opacity:.82}
-.store b{font-family:var(--display);font-size:20px;font-weight:700;line-height:1.1}
-.note{font-size:15px;color:var(--band-muted);margin-top:14px}
-.hero-phone{align-self:end;justify-self:center;margin-bottom:-90px}
+.store{display:flex;align-items:center;gap:10px;min-width:180px;min-height:56px;padding:8px 18px;border-radius:14px;background:var(--frame);color:#fff}
+.store svg{width:24px;height:24px;flex:none}
+.store span{display:flex;flex-direction:column;line-height:1.15}
+.store small{font-size:12px;opacity:.85;font-weight:700}
+.store b{font-size:19px;font-weight:900}
+.note{font-size:15px;color:var(--muted);margin-top:14px;font-weight:700}
+.scene{width:100%;height:auto;display:block}
+.bob{animation:bob 3.2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.bob2{animation:bob 3.2s ease-in-out -1.6s infinite;transform-box:fill-box;transform-origin:center}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
-/* phone frame and the app's own screen parts */
-.phone{width:300px;height:620px;background:var(--paper);color:var(--ink);border:9px solid var(--frame);border-radius:42px;box-shadow:0 30px 60px rgba(10,24,22,.28);overflow:hidden;display:flex;flex-direction:column;font-size:14px;line-height:1.45;flex:none}
-.status{display:flex;justify-content:space-between;padding:12px 22px 0;font-family:var(--mono);font-size:11px;color:var(--muted)}
-.screen{flex:1;display:flex;flex-direction:column;padding:14px 18px 16px;gap:12px;min-height:0}
-.s-title{font-family:var(--display);font-weight:700;font-size:21px;line-height:1.15;letter-spacing:-.01em}
-.s-sub{font-family:var(--display);font-weight:700;font-size:16px}
-.m{color:var(--muted);font-size:12.5px}
-.lab{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
-.btn{display:flex;align-items:center;justify-content:center;border-radius:13px;padding:12px;font-weight:700;font-size:15px;background:var(--accent);color:var(--accent-ink)}
-.btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--line)}
-.card{border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:6px}
-.card.soft{background:var(--soft);border-color:transparent}
+/* goals strip */
+.goals{border-block:2px solid var(--line);background:var(--bg)}
+.goals .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;padding-block:20px}
+.goals .lab{font-weight:900;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+.pill{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border-radius:999px;border:2px solid var(--line);font-weight:800;font-size:16px}
+.pill i{width:10px;height:10px;border-radius:50%;display:inline-block}
+
+/* feature rows */
+section{padding-block:72px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.row.flip .art{order:-1}
+.copy{display:flex;flex-direction:column;gap:16px;max-width:480px}
+.copy p{font-size:19px;color:var(--muted);font-weight:600}
+.kicker{font-weight:900;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--go-text)}
+.art{display:flex;justify-content:center;align-items:center;position:relative;min-height:420px}
+.tinted{background:var(--tint)}
+
+/* phones */
+.phone{width:280px;border-radius:40px;background:var(--frame);padding:10px;box-shadow:var(--shadow);position:relative;z-index:1}
+.screen{background:var(--screen);border-radius:31px;overflow:hidden;padding:26px 16px 18px;display:flex;flex-direction:column;gap:11px;min-height:520px;font-size:14px;line-height:1.4}
+.s-h{font-weight:900;font-size:20px}
+.s-lab{font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.s-card{border:2px solid var(--line);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.s-today{background:var(--go);color:#fff;border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:9px}
+.s-today .s-lab{color:#ffffff}
+.s-btn{min-height:42px;border-radius:13px;background:#fff;color:var(--go-edge);font-weight:900;display:flex;align-items:center;justify-content:center;letter-spacing:.05em;text-transform:uppercase;font-size:13px;box-shadow:0 3px 0 rgba(0,0,0,.18)}
+.s-btn.go{background:var(--go);color:#fff;box-shadow:0 3px 0 var(--go-edge)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{border:1.5px solid var(--line);border-radius:999px;padding:5px 10px;font-size:12px;font-weight:500}
-.chip.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.input{border:1.5px solid var(--line);border-radius:11px;padding:9px 10px;font-size:13.5px}
-.seg{display:flex;border:1.5px solid var(--line);border-radius:11px;overflow:hidden}
-.seg div{flex:1;text-align:center;padding:7px 0;font-size:13px;font-weight:600}
-.seg .on{background:var(--ink);color:var(--paper)}
-.sp{flex:1}
-.track{height:6px;border-radius:3px;background:var(--line);overflow:hidden}
-.track i{display:block;height:100%;background:var(--turn)}
-.stage{font-family:var(--mono);font-size:12px;display:flex;justify-content:space-between}
-.pulse{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;flex:1;color:var(--turn)}
-.ring{width:132px;height:132px;border-radius:50%;display:grid;place-items:center;position:relative}
-.ring::before{content:"";position:absolute;inset:0;border-radius:50%;border:3px solid currentColor;opacity:.25}
-.ring::after{content:"";position:absolute;inset:14px;border-radius:50%;border:3px solid currentColor;opacity:.5}
-.ring b{width:66px;height:66px;border-radius:50%;background:currentColor}
-.state{font-family:var(--display);font-weight:700;font-size:24px}
-.coach{background:var(--soft);border-radius:11px;padding:9px 11px;font-size:13px}
-.coach b{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
-.cap{border-left:3px solid var(--line);padding:3px 9px;font-size:12.5px;color:var(--muted)}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.two .btn{font-size:13.5px;white-space:nowrap;padding-inline:6px}
-.score{display:flex;align-items:baseline;gap:4px;font-family:var(--display);font-weight:700}
-.score .n{font-size:46px;line-height:1;letter-spacing:-.03em}
-.score .d{font-size:15px;color:var(--muted)}
-.mk{display:grid;grid-template-columns:76px 1fr 24px;gap:7px;align-items:center;font-size:12px}
-.mk .b{height:7px;border-radius:4px;background:var(--line);overflow:hidden}
-.mk .b i{display:block;height:100%;background:var(--accent)}
-.mk .v{font-family:var(--mono);font-size:11px;text-align:right}
-.snd{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.snd div{border:1px solid var(--line);border-radius:10px;padding:6px 8px}
-.snd b{display:block;font-family:var(--mono);font-size:13px}
-.snd span{font-size:10px;color:var(--muted)}
-.video{aspect-ratio:16/9;border-radius:12px;background:var(--frame);border:1px solid var(--line);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font-size:11px}
-.video span:first-child{width:38px;height:38px;border-radius:50%;background:var(--accent);display:grid;place-items:center;font-size:13px;color:var(--accent-ink)}
+.chip{display:inline-flex;align-items:center;gap:5px;min-height:26px;padding:0 10px;border-radius:999px;font-size:12.5px;font-weight:800;background:var(--tint);color:var(--ink)}
+.chip.on{background:var(--go-soft);color:var(--go-text)}
+.chip.next{background:var(--rust-soft);color:var(--rust-text)}
+.chip.sun{background:var(--sun-soft);color:var(--ink)}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mini div{border:2px solid var(--line);border-radius:13px;padding:9px;display:flex;flex-direction:column}
+.mini b{font-size:13.5px}
+.mini span{font-size:11.5px;color:var(--muted);font-weight:600}
+.bubble{background:var(--tint);border-radius:16px 16px 16px 4px;padding:10px 12px;font-weight:700}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.nums div{border:2px solid var(--line);border-radius:12px;padding:7px;display:flex;flex-direction:column}
+.nums b{font-size:17px;font-weight:900}
+.nums span{font-size:10.5px;color:var(--muted);font-weight:700;line-height:1.25}
+.path{display:flex;flex-direction:column;gap:12px;padding-top:4px}
+.node{display:flex;align-items:center;gap:12px}
+.dot{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 4px 0 rgba(0,0,0,.14)}
+.dot.done{background:var(--go)}
+.dot.here{background:var(--paper);border:4px solid var(--go)}
+.dot.lock{background:var(--line);box-shadow:none}
+.node b{font-size:14px;display:block}
+.node span{font-size:11.5px;color:var(--muted);font-weight:700}
+.tr{font-size:12.5px;color:var(--muted);border-left:3px solid var(--line);padding-left:8px;font-weight:600}
+.float{position:absolute;z-index:2}
 
-/* sections */
-section{padding-block:96px}
-.kinds{background:var(--tint);padding-block:124px 72px}
-.stack{display:flex;flex-direction:column;gap:14px;max-width:660px}
-.kindgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px}
-.kind{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px}
-.kind .len{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:600}
-.kind p{color:var(--muted);font-size:15.5px}
-.steprow{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px}
-.step{display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center}
-.step .num{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:600}
-.step p{color:var(--muted);font-size:16px;max-width:30ch}
-.step .phone{transform:scale(.86);transform-origin:top center;margin-bottom:-86px;margin-top:6px}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-.split .copy{display:flex;flex-direction:column;gap:18px;max-width:46ch}
-.split .copy p{color:var(--muted)}
-.ticks{list-style:none;padding:0;margin:6px 0 0;display:flex;flex-direction:column;gap:10px}
-.ticks li{padding-left:30px;position:relative}
-.ticks li::before{content:"";position:absolute;left:0;top:5px;width:16px;height:16px;border-radius:50%;background:var(--soft);box-shadow:inset 0 0 0 5px var(--accent)}
-.alt{background:var(--tint)}
-.split .phone{justify-self:center}
-.parents{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
-.parents div{border-top:3px solid var(--accent);padding-top:16px;display:flex;flex-direction:column;gap:6px}
-.parents p{color:var(--muted);font-size:16px}
-.faq{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;margin-top:30px}
-details{border-bottom:1px solid var(--line)}
-summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:56px;padding-block:10px}
+/* safety cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.card{border:2px solid var(--line);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:10px;background:var(--paper)}
+.card svg{width:44px;height:44px}
+.card p{color:var(--muted);font-weight:600;font-size:17px}
+.center{text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
+.center p{color:var(--muted);font-weight:600;max-width:46ch;font-size:19px}
+
+/* questions */
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin-top:32px}
+details{border:2px solid var(--line);border-radius:18px;padding:0 20px;background:var(--paper)}
+summary{cursor:pointer;font-weight:800;font-size:18px;min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-family:var(--mono);font-size:18px;color:var(--accent)}
-details[open] summary::after{content:"\2212"}
-details p{color:var(--muted);padding-bottom:16px;font-size:16px}
-.final{background:var(--band);color:var(--band-ink);text-align:center}
-.final .wrap{display:flex;flex-direction:column;align-items:center;gap:16px}
-.final p{color:var(--band-muted);font-size:19px}
-footer{padding-block:24px;font-size:14px;color:var(--muted)}
-footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-footer .links{display:flex;gap:6px}
-footer .links a{min-height:44px;display:inline-flex;align-items:center;padding-inline:8px;text-decoration:none}
-footer .links a:hover{text-decoration:underline}
+summary::after{content:"+";font-size:26px;font-weight:700;color:var(--muted);flex:none}
+details[open] summary::after{content:"−"}
+details p{padding-bottom:18px;color:var(--muted);font-weight:600;font-size:17px}
+
+/* last word */
+.final{background:var(--go);color:#fff;text-align:center;padding-block:80px;position:relative;overflow:hidden}
+.final h2{color:#fff}
+.final p{color:#d9f1ec;font-weight:700;margin-top:12px;font-size:19px}
+.final .stores{justify-content:center}
+.final .store{background:#24252a}
+.final :focus-visible{outline-color:#fff}
+footer{padding-block:28px;font-size:15px;color:var(--muted);font-weight:700}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center}
+footer .links{display:flex;gap:4px;flex-wrap:wrap}
+footer .links a{text-decoration:none;min-height:44px;display:inline-flex;align-items:center;padding-inline:10px;border-radius:10px}
+footer .links a:hover{color:var(--ink)}
 
 @media (max-width:900px){
-  .hero{grid-template-columns:1fr}
-  .hero-phone{margin-bottom:-70px}
-  .kindgrid{grid-template-columns:1fr 1fr}
-  .steprow{grid-template-columns:1fr}
-  .split{grid-template-columns:1fr}
-  .split.flip .phone{order:2}
-  .parents,.faq{grid-template-columns:1fr}
-  .navlinks a:not(.navcta){display:none}
+  .navlinks a:not(.btn){display:none}
+  .hero,.row{grid-template-columns:1fr;gap:28px}
+  .hero{padding-block:32px 48px;text-align:center}
+  .hero .lead{margin-inline:auto}
+  .hero .stores{justify-content:center}
+  .row.flip .art{order:0}
+  .copy{max-width:none}
+  .art{min-height:0}
+  section{padding-block:56px}
+  .cards,.faq{grid-template-columns:1fr}
 }
-@media (max-width:520px){.kindgrid{grid-template-columns:1fr} .phone{width:280px;height:590px} section{padding-block:72px} h1{font-size:38px}}
+@media (max-width:420px){
+  .store{min-width:0;flex:1 1 150px}
+  .float{display:none}
+}
 </style>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <path id="body" d="M22 78 V31 A9 9 0 0 1 31 22 H50 A28 28 0 0 1 78 50 A28 28 0 0 1 50 78 Z"/>
+    <symbol id="sam-smile" viewBox="16 16 68 68"><use href="#body" fill="var(--sam)" stroke="var(--sam)" stroke-width="5" stroke-linejoin="miter"/><circle cx="42" cy="45" r="3.6" fill="var(--sam-face)"/><circle cx="56" cy="45" r="3.6" fill="var(--sam-face)"/><path d="M42 55.5 A14 14 0 0 0 56 55.5" fill="none" stroke="var(--sam-face)" stroke-width="4" stroke-linecap="round"/></symbol>
+    <symbol id="sam-talk" viewBox="16 16 68 68"><use href="#body" fill="var(--sam)" stroke="var(--sam)" stroke-width="5" stroke-linejoin="miter"/><circle cx="42" cy="44" r="3.6" fill="var(--sam-face)"/><circle cx="56" cy="44" r="3.6" fill="var(--sam-face)"/><path d="M42 53 Q49 64 56 53 Z" fill="var(--sam-face)"/></symbol>
+    <symbol id="sam-listen" viewBox="16 16 68 68"><use href="#body" fill="var(--sam)" stroke="var(--sam)" stroke-width="5" stroke-linejoin="miter"/><circle cx="44" cy="44" r="3.6" fill="var(--sam-face)"/><circle cx="58" cy="44" r="3.6" fill="var(--sam-face)"/><path d="M46 56 Q51 59 56 56" fill="none" stroke="var(--sam-face)" stroke-width="4" stroke-linecap="round"/></symbol>
+    <symbol id="sam-cheer" viewBox="16 16 68 68"><use href="#body" fill="var(--sam)" stroke="var(--sam)" stroke-width="5" stroke-linejoin="miter"/><path d="M38 46 Q42 40 46 46" fill="none" stroke="var(--sam-face)" stroke-width="3.6" stroke-linecap="round"/><path d="M52 46 Q56 40 60 46" fill="none" stroke="var(--sam-face)" stroke-width="3.6" stroke-linecap="round"/><path d="M40 53 Q49 66 58 53 Z" fill="var(--sam-face)"/></symbol>
+    <symbol id="rival" viewBox="16 16 68 68"><g transform="translate(100 0) scale(-1 1)"><use href="#body" fill="var(--rust)" stroke="var(--rust)" stroke-width="5" stroke-linejoin="miter"/></g><circle cx="44" cy="45" r="3.6" fill="#fff"/><circle cx="58" cy="45" r="3.6" fill="#fff"/><path d="M45 57 H57" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></symbol>
+    <symbol id="flame" viewBox="0 0 24 24"><path d="M12 2c1 4 5 6 5 11a5 5 0 0 1-10 0c0-2.5 1.2-4 2.5-5 0 2 1 3 2 3 0-3-1-6 .5-9z" fill="var(--sun)"/></symbol>
+    <symbol id="tick" viewBox="0 0 24 24"><path d="M6 12.5l4 4L18 8" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="lock" viewBox="0 0 24 24"><rect x="6" y="11" width="12" height="9" rx="2" fill="var(--muted)"/><path d="M9 11V8a3 3 0 0 1 6 0v3" stroke="var(--muted)" stroke-width="2" fill="none"/></symbol>
+    <symbol id="apple" viewBox="0 0 24 24"><path fill="#fff" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9s-1.9-.9-3.2-.8c-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8 2.1-1.2 2.9-2.4c.9-1.3 1.3-2.6 1.3-2.7 0 0-2.5-1-2.4-4zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></symbol>
+    <symbol id="play" viewBox="0 0 24 24"><path fill="#34d399" d="M3.6 2.3 13.4 12l-9.8 9.7c-.4-.2-.6-.6-.6-1.1V3.4c0-.5.2-.9.6-1.1z"/><path fill="#fbbf24" d="m16.6 15.2-3.2-3.2 3.2-3.2 3.7 2.1c1 .6 1 1.6 0 2.2z"/><path fill="#f87171" d="M16.6 15.2 13.4 12l-9.8 9.7c.4.2.9.2 1.4-.1z"/><path fill="#60a5fa" d="M16.6 8.8 5 2.4c-.5-.3-1-.3-1.4-.1L13.4 12z"/></symbol>
+  </defs>
+</svg>
+
 <a class="skip" href="#main">Skip to the content</a>
-<header class="band">
-  <div class="deco" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="top">
-      <a class="mark" href="#top" aria-label="Debate Coach, back to the top">
-        <svg viewBox="6 6 36 36" aria-hidden="true"><path d="M37.1 33.2 A16 16 0 1 1 37.1 14.8" fill="none" stroke="currentColor" stroke-opacity=".55" stroke-width="4" stroke-linecap="round"/><circle cx="24" cy="24" r="8" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="24" cy="24" r="3" fill="currentColor"/></svg>
-        Debate Coach
-      </a>
-      <nav class="navlinks" aria-label="Main">
-        <a href="#how">How it works</a>
-        <a href="#lessons">Lessons</a>
-        <a href="#languages">Languages</a>
-        <a href="#parents">For parents</a>
-        <a href="#faq">Questions</a>
-        <a class="navcta" href="#get">Get the app</a>
-      </nav>
-    </div>
-    <div class="hero" id="top">
-      <div>
-        <h1>Learn to argue in English, out loud.</h1>
-        <p class="lead">Talk with a partner, give a speech, answer an argument, then debate. Your coach listens every time and tells you the one thing to change.</p>
-        <div class="stores" role="list" aria-label="Where to get the app">
-          <div class="store" role="listitem"><small>Coming soon to the</small><b>App Store</b></div>
-          <div class="store" role="listitem"><small>Coming soon to</small><b>Google Play</b></div>
-        </div>
-        <p class="note">For iPhone and Android, in eight languages.</p>
-      </div>
-      <div class="hero-phone">
-        <div class="phone" role="img" aria-label="The practice room on a phone. It's your turn, with one minute twelve seconds left. The coach says to name their strongest point first.">
-          <div class="status"><span>9:41</span><span>●●● ▮</span></div>
-          <div class="screen">
-            <div style="display:flex;flex-direction:column;gap:6px">
-              <div class="stage"><span>Your rebuttal</span><span>1:12 left</span></div>
-              <div class="track"><i style="width:62%"></i></div>
-            </div>
-            <div class="pulse"><div class="ring"><b></b></div><div class="state">Your turn</div><div class="m">Say the point, then why it fails.</div></div>
-            <div class="coach"><b>Coach</b>Go when you're ready. Name their strongest point first.</div>
-            <div class="cap">Your opponent said: banning phones removes a tool teachers already use for quick research.</div>
-            <div class="two"><div class="btn ghost">Finish speech</div><div class="btn ghost">Leave</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<header class="wrap top">
+  <a class="brand" href="#top" aria-label="Debate Coach, back to the top">
+    <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#24252a"/><path d="M22 78 V31 A9 9 0 0 1 31 22 H50 A28 28 0 0 1 78 50 A28 28 0 0 1 50 78 Z" fill="none" stroke="#fff" stroke-width="5"/><circle cx="42" cy="45" r="3.3" fill="#fff"/><circle cx="56" cy="45" r="3.3" fill="#fff"/><path d="M42 55.5 A14 14 0 0 0 56 55.5" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>
+    Debate Coach
+  </a>
+  <nav class="navlinks" aria-label="Main">
+    <a href="#daily">How it works</a>
+    <a href="#students">For parents</a>
+    <a href="#faq">Questions</a>
+    <a class="btn" href="#get">Get the app</a>
+  </nav>
 </header>
 
 <main id="main">
-<section class="kinds" aria-labelledby="kinds-h">
+<div class="wrap hero" id="top">
+  <div>
+    <h1>Speak like a debater, three minutes a day.</h1>
+    <p class="lead">Sam is a coach who listens. Say your point out loud, and the moment you stop, Sam tells you what worked and the one thing to change.</p>
+    <div class="stores" role="list" aria-label="Where to get the app">
+      <div class="store" role="listitem"><svg aria-hidden="true"><use href="#apple"/></svg><span><small>Coming soon</small><b>App Store</b></span></div>
+      <div class="store" role="listitem"><svg aria-hidden="true"><use href="#play"/></svg><span><small>Coming soon</small><b>Google Play</b></span></div>
+    </div>
+    <p class="note">For iPhone and Android, in eight languages.</p>
+  </div>
+  <svg class="scene" viewBox="0 0 520 440" role="img" aria-label="Sam, the coach, speaking up with a timer and a streak flame beside them, while a rust-coloured opponent waits for its turn.">
+    <circle cx="270" cy="230" r="190" fill="var(--tint)"/>
+    <g class="bob"><svg x="185" y="70" width="250" height="250"><use href="#sam-talk"/></svg></g>
+    <g fill="none" stroke="var(--go)" stroke-width="7" stroke-linecap="round"><path d="M448 150 q22 30 0 60"/><path d="M472 128 q38 52 0 104"/></g>
+    <g class="bob2"><svg x="30" y="262" width="130" height="130"><use href="#rival"/></svg></g>
+    <g transform="translate(330 300)"><rect width="150" height="60" rx="30" fill="var(--paper)" stroke="var(--line)" stroke-width="3"/><circle cx="34" cy="30" r="15" fill="none" stroke="var(--go)" stroke-width="5"/><path d="M34 21 V30 L40 34" stroke="var(--go)" stroke-width="4" fill="none" stroke-linecap="round"/><text x="62" y="39" font-family="Nunito,sans-serif" font-weight="900" font-size="26" fill="var(--ink)">1:00</text></g>
+    <g transform="translate(60 70)"><rect width="104" height="56" rx="28" fill="var(--sun-soft)"/><svg x="14" y="10" width="36" height="36"><use href="#flame"/></svg><text x="56" y="38" font-family="Nunito,sans-serif" font-weight="900" font-size="24" fill="var(--ink)">12</text></g>
+    <rect x="452" y="70" width="18" height="18" rx="4" fill="var(--rust)" transform="rotate(18 461 79)"/><circle cx="210" cy="60" r="8" fill="var(--sun)"/><rect x="470" y="380" width="14" height="22" rx="4" fill="var(--go)" transform="rotate(-24 477 391)"/><circle cx="230" cy="410" r="7" fill="var(--rust)"/>
+  </svg>
+</div>
+
+<div class="goals" aria-label="What people practise for">
   <div class="wrap">
-    <div class="stack">
-      <span class="eyebrow">Four ways to practise</span>
-      <h2 id="kinds-h">Start by talking. Finish in a full round.</h2>
-    </div>
-    <div class="kindgrid">
-      <div class="kind"><span class="len">5 to 15 min</span><h3>Conversation</h3><p>Speak English with a partner who plays a role, like an interviewer.</p></div>
-      <div class="kind"><span class="len">2 to 7 min</span><h3>Speech</h3><p>Persuade, explain or tell a story, then hear how it landed.</p></div>
-      <div class="kind"><span class="len">4 to 5 min</span><h3>Drill</h3><p>Work on one skill at a time, such as rebuttal or weighing.</p></div>
-      <div class="kind"><span class="len">24 to 56 min</span><h3>Debate</h3><p>World Schools, British Parliamentary, Public Forum, Lincoln-Douglas and more, against AI debaters.</p></div>
-    </div>
+    <span class="lab">Practise for</span>
+    <span class="pill"><i style="background:var(--go)"></i>Class presentations</span>
+    <span class="pill"><i style="background:var(--rust)"></i>Debate club</span>
+    <span class="pill"><i style="background:var(--sun)"></i>Interviews</span>
+    <span class="pill"><i style="background:var(--ink)"></i>Speaking English</span>
   </div>
-</section>
+</div>
 
-<section id="how" aria-labelledby="how-h">
-  <div class="wrap">
-    <div class="stack">
-      <span class="eyebrow">How it works</span>
-      <h2 id="how-h">Set it up, say it out loud, read the report.</h2>
-    </div>
-    <ol class="steprow" style="list-style:none;padding:0;margin-block-end:0">
-      <li class="step">
-        <span class="num">Step 1</span><h3>Set it up in your own words</h3>
-        <p>Write the motion or tap Suggest. Then pick your side and the one thing you want to improve.</p>
-        <div class="phone" role="img" aria-label="The booking card for a one-to-one debate on banning phones in schools, arguing for, working on rebuttal.">
-          <div class="status"><span>9:41</span><span>●●● ▮</span></div>
-          <div class="screen">
-            <div class="m">‹ Back</div>
-            <div class="s-title">One-to-one debate</div>
-            <div style="display:flex;flex-direction:column;gap:5px"><span class="lab">The motion</span><div class="input">This house would ban phones in schools.</div></div>
-            <div style="display:flex;flex-direction:column;gap:5px"><span class="lab">You argue</span><div class="seg"><div class="on">For</div><div>Against</div></div></div>
-            <div style="display:flex;flex-direction:column;gap:5px"><span class="lab">The one thing to improve</span><div class="chips"><span class="chip on">Rebuttal</span><span class="chip">Structure</span><span class="chip">Pace</span><span class="chip">Evidence</span></div></div>
-            <div class="sp"></div>
-            <div class="btn">Start now</div>
-          </div>
-        </div>
-      </li>
-      <li class="step">
-        <span class="num">Step 2</span><h3>Argue it out loud</h3>
-        <p>Your opponent answers what you actually said. The screen always shows whose turn it is and how long is left.</p>
-        <div class="phone" role="img" aria-label="The practice room while the opponent speaks, with two minutes forty seconds left in their opening.">
-          <div class="status"><span>9:41</span><span>●●● ▮</span></div>
-          <div class="screen">
-            <div style="display:flex;flex-direction:column;gap:6px"><div class="stage"><span>Their opening</span><span>2:40 left</span></div><div class="track"><i style="width:35%;background:var(--speak)"></i></div></div>
-            <div class="pulse" style="color:var(--speak)"><div class="ring"><b></b></div><div class="state">Speaking</div><div class="m">Your opponent has the floor.</div></div>
-            <div class="cap">Phones are part of how students learn now, and a ban teaches them nothing about using them well.</div>
-            <div class="two"><div class="btn ghost">Finish speech</div><div class="btn ghost">Leave</div></div>
-          </div>
-        </div>
-      </li>
-      <li class="step">
-        <span class="num">Step 3</span><h3>Read your report</h3>
-        <p>It's ready about two minutes after you finish. It gives a score, what to keep doing and the one thing to change.</p>
-        <div class="phone" role="img" aria-label="A report scoring 74 out of 100, with what to keep doing, what to change, four marks and how the speaker sounded.">
-          <div class="status"><span>9:41</span><span>●●● ▮</span></div>
-          <div class="screen">
-            <div style="display:flex;justify-content:space-between;align-items:flex-end"><div><span class="lab">Your report</span><div class="s-sub">One-to-one debate</div></div><div class="score"><span class="n">74</span><span class="d">/100</span></div></div>
-            <div class="card soft"><div style="font-size:13px"><b>Keep doing:</b> you opened with your strongest point.</div><div style="font-size:13px"><b>Change next time:</b> say why their point fails, not only that it does.</div></div>
-            <div style="display:flex;flex-direction:column;gap:6px">
-              <div class="mk"><span>Argument</span><div class="b"><i style="width:78%"></i></div><span class="v">78</span></div>
-              <div class="mk"><span>Rebuttal</span><div class="b"><i style="width:61%"></i></div><span class="v">61</span></div>
-              <div class="mk"><span>Structure</span><div class="b"><i style="width:80%"></i></div><span class="v">80</span></div>
-              <div class="mk"><span>Delivery</span><div class="b"><i style="width:81%"></i></div><span class="v">81</span></div>
-            </div>
-            <span class="lab">How you sounded</span>
-            <div class="snd"><div><b>148</b><span>words a min</span></div><div><b>6</b><span>fillers</span></div><div><b>2:51</b><span>of 3:00</span></div></div>
-          </div>
-        </div>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<section class="alt" id="languages" aria-labelledby="lang-h">
-  <div class="wrap split">
+<section id="daily" aria-labelledby="daily-h">
+  <div class="wrap row">
     <div class="copy">
-      <span class="eyebrow">Your family's language</span>
-      <h2 id="lang-h">The practice is in English. The coach's notes come in yours.</h2>
-      <p>Every report shows the coach's words in English with your language beside them. A student who's still learning knows exactly what to change, and so does the parent reading over their shoulder.</p>
-      <ul class="ticks">
-        <li>English, 简体中文, 繁體中文, 한국어, 日本語, Tiếng Việt, Español and Português</li>
-        <li>A weekly note to a parent, in the parent's language</li>
-      </ul>
+      <span class="kicker">Every day</span>
+      <h2 id="daily-h">Three minutes is enough.</h2>
+      <p>Each day Sam picks one short task from your last practice, like answering an argument or giving your opinion in a minute. Do one and your streak grows.</p>
     </div>
-    <div class="phone" role="img" aria-label="A report in Simplified Chinese and English: the coach's advice in English with the Chinese translation beneath it.">
-      <div class="status"><span>9:41</span><span>●●● ▮</span></div>
-      <div class="screen" lang="zh-Hans">
-        <div style="display:flex;justify-content:space-between;align-items:flex-end"><div><span class="lab">你的报告</span><div class="s-sub" lang="en">Speech, 2 minutes</div></div><div class="score"><span class="n">74</span><span class="d">/100</span></div></div>
-        <div class="card soft">
-          <span class="lab">继续保持</span>
-          <div style="font-size:13px" lang="en">Keep pairing a claim with a direct answer to the likely objection.</div>
-          <div style="font-size:12.5px;color:var(--muted);border-left:3px solid var(--line);padding-left:8px">继续保持这个好习惯：提出观点时，紧接着直接回应对方可能的反对意见。</div>
-          <span class="lab">下次改进</span>
-          <div style="font-size:13px" lang="en">Make sure every sentence argues the topic you were given.</div>
-          <div style="font-size:12.5px;color:var(--muted);border-left:3px solid var(--line);padding-left:8px">下次请确保你说的每一句话都在论证给你的辩题。</div>
+    <div class="art">
+      <div class="phone" role="img" aria-label="The home screen. A five-day streak, two of three minutes done today, and Sam's task for today: answer one argument about banning homework, with a Start button.">
+        <div class="screen">
+          <div style="display:flex;justify-content:space-between;align-items:center"><span class="s-h">Hi Mia</span><span class="chips"><span class="chip sun"><svg width="14" height="14" aria-hidden="true"><use href="#flame"/></svg>5</span><span class="chip">2 of 3 min</span></span></div>
+          <div class="s-today">
+            <div style="display:flex;gap:10px;align-items:center"><svg width="40" height="40" aria-hidden="true" style="color:#fff"><use href="#sam-smile" style="--sam:#fff;--sam-face:var(--go)"/></svg><div><div class="s-lab">Today's three minutes</div><div style="font-weight:900;font-size:16px">Answer one argument</div></div></div>
+            <div style="font-weight:700">"Homework should be banned." Say why it's wrong, with an example.</div>
+            <div class="s-btn">Start</div>
+          </div>
+          <div class="s-card" style="flex-direction:row;align-items:center;gap:10px"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3" stroke="var(--go)" stroke-width="2.4" fill="none"/><path d="M8 9h8M8 13h8M8 17h5" stroke="var(--go)" stroke-width="2.4" stroke-linecap="round"/></svg><div><b>Yesterday's report is ready</b><div style="font-size:12px;color:var(--muted);font-weight:600">Phones in class, 1 minute</div></div></div>
+          <div class="s-lab">When you have more time</div>
+          <div class="mini"><div><b>Debate</b><span>Against AI speakers</span></div><div><b>Speech</b><span>2 to 7 minutes</span></div><div><b>Conversation</b><span>With a partner</span></div><div><b>Drill</b><span>One skill at a time</span></div></div>
         </div>
-        <span class="lab">再说一遍</span>
-        <div class="chips" lang="en"><span class="chip">evidence</span><span class="chip">therefore</span><span class="chip">regulation</span></div>
       </div>
+      <svg class="float" width="96" height="96" viewBox="0 0 24 24" aria-hidden="true" style="right:8%;top:6%"><use href="#flame"/></svg>
     </div>
   </div>
 </section>
 
-<section id="lessons" aria-labelledby="lessons-h">
-  <div class="wrap split flip">
-    <div class="phone" role="img" aria-label="A lesson called Rebuttal: say why it fails, with a four-minute video, a short text, a check question and a button to practise it.">
-      <div class="status"><span>9:41</span><span>●●● ▮</span></div>
-      <div class="screen">
-        <div class="m">‹ How a debate works</div>
-        <span class="lab">Lesson 3 of 5</span>
-        <div class="s-title">Rebuttal: say why it fails</div>
-        <div class="video"><span>▶</span><span>4:10 · Rebuttal</span></div>
-        <div style="font-size:13px">A rebuttal has two halves. First name their point in one sentence. Then say why it fails.</div>
-        <div class="card"><span class="lab">Check</span><div style="font-size:12.5px">"Phones distract students" fails because grades didn't drop. Which half is that?</div><div class="chips"><span class="chip on">The reason is wrong</span><span class="chip">It doesn't matter</span></div></div>
-        <div class="sp"></div>
-        <div class="btn">Practise it: rebuttal drill</div>
+<section class="tinted" aria-labelledby="finish-h">
+  <div class="wrap row flip">
+    <div class="copy">
+      <span class="kicker">The moment you stop</span>
+      <h2 id="finish-h">No waiting for a verdict.</h2>
+      <p>Sam says what you did well and what to change as soon as you finish. Your full report follows about two minutes later, down to how fast you spoke and how often you said "um".</p>
+    </div>
+    <div class="art">
+      <div class="phone" role="img" aria-label="The end of a practice. Sam cheers and says the reason was clear and to add an example next time. Two chips read Gave a reason and Add an example, and the streak reaches day one.">
+        <div class="screen" style="align-items:stretch">
+          <div style="display:flex;justify-content:center;padding-top:6px"><svg width="110" height="110" aria-hidden="true"><use href="#sam-cheer"/></svg></div>
+          <div style="text-align:center;font-weight:900;font-size:24px">Nice one</div>
+          <div class="bubble">"You gave a clear reason. Next time, add one example from your own class."</div>
+          <div class="chips" style="justify-content:center"><span class="chip on">You did: gave a reason</span><span class="chip next">Next: add an example</span></div>
+          <div class="s-card" style="flex-direction:row;align-items:center;gap:10px"><svg width="26" height="26" aria-hidden="true"><use href="#flame"/></svg><div><b>Day 1 of your streak</b><div style="font-size:12px;color:var(--muted);font-weight:600">Your full report is on its way.</div></div></div>
+          <div style="flex:1"></div>
+          <div class="s-btn go">Try again with an example</div>
+        </div>
       </div>
-    </div>
-    <div class="copy">
-      <span class="eyebrow">Lessons</span>
-      <h2 id="lessons-h">Watch a short lesson. Then do it.</h2>
-      <p>Each lesson is a few minutes of video from a debate coach, a short read and a quick check. Most end with a practice that's already set up, so you try the idea while it's fresh.</p>
-      <ul class="ticks">
-        <li>Courses that start with what a motion asks and build to weighing</li>
-        <li>A drill or a speech ready at the end of most lessons</li>
-      </ul>
+      <svg class="float" width="120" height="80" viewBox="0 0 120 80" aria-hidden="true" style="left:4%;top:8%"><rect x="10" y="10" width="14" height="14" rx="3" fill="var(--go)" transform="rotate(20 17 17)"/><circle cx="70" cy="18" r="7" fill="var(--sun)"/><rect x="90" y="40" width="10" height="18" rx="3" fill="var(--rust)" transform="rotate(-25 95 49)"/><circle cx="34" cy="60" r="6" fill="var(--rust)"/></svg>
     </div>
   </div>
 </section>
 
-<section class="alt" aria-labelledby="next-h">
-  <div class="wrap split">
+<section aria-labelledby="path-h">
+  <div class="wrap row">
     <div class="copy">
-      <span class="eyebrow">What to practise next</span>
-      <h2 id="next-h">Every report sets up the next practice.</h2>
-      <p>The coach reads your last report and suggests what to work on today. If your rebuttals named the point but not why it fails, today's practice is a rebuttal drill.</p>
-      <ul class="ticks">
-        <li>Today's practice, picked from your last report</li>
-        <li>Every report kept in one place to read again</li>
-      </ul>
+      <span class="kicker">Built on debate</span>
+      <h2 id="path-h">The structure debaters use, for every conversation.</h2>
+      <p>Say your point, give a reason, add an example and answer the other side. Your path fills in as Sam hears each one. When you're ready, take on AI speakers in World Schools, British Parliamentary, Public Forum or Lincoln-Douglas.</p>
     </div>
-    <div class="phone" role="img" aria-label="The home screen. Today's practice is a four-minute rebuttal drill, suggested from the last report.">
-      <div class="status"><span>9:41</span><span>●●● ▮</span></div>
-      <div class="screen">
-        <div style="font-family:var(--display);font-weight:700;font-size:16px">Debate Coach</div>
-        <div class="s-title">Hi Ana. Ready for today?</div>
-        <div class="card soft"><span class="lab">Today's practice</span><div class="s-sub">Rebuttal drill, 4 minutes</div><div class="m">Your last report said your rebuttals name the point but not why it fails.</div><div class="btn" style="padding:8px 14px;font-size:13px;align-self:flex-start">Start</div></div>
-        <span class="lab">Or choose</span>
-        <div class="two">
-          <div class="card" style="gap:1px"><b style="font-size:13.5px">Drill</b><span class="m">4 to 5 min</span></div>
-          <div class="card" style="gap:1px"><b style="font-size:13.5px">Speech</b><span class="m">2 to 7 min</span></div>
-          <div class="card" style="gap:1px"><b style="font-size:13.5px">Conversation</b><span class="m">5 to 15 min</span></div>
-          <div class="card" style="gap:1px"><b style="font-size:13.5px">Debate</b><span class="m">One-to-one</span></div>
+    <div class="art">
+      <div class="phone" role="img" aria-label="Your path. Say your point first and Give a reason are done, Add an example is where you are, and Answer the other side and Sum up in one line are still to come.">
+        <div class="screen">
+          <div class="s-h">Your path</div>
+          <div style="font-size:12.5px;color:var(--muted);font-weight:700;margin-top:-6px">A skill fills in when Sam hears it.</div>
+          <div class="path">
+            <div class="node"><span class="dot done"><svg width="22" height="22" aria-hidden="true"><use href="#tick"/></svg></span><div><b>Say your point first</b><span>Heard in 4 practices</span></div></div>
+            <div class="node" style="margin-left:34px"><span class="dot done"><svg width="22" height="22" aria-hidden="true"><use href="#tick"/></svg></span><div><b>Give a reason</b><span>Heard in 3 practices</span></div></div>
+            <div class="node" style="margin-left:68px"><span class="dot here"><svg width="30" height="30" aria-hidden="true"><use href="#sam-smile"/></svg></span><div><b>Add an example</b><span style="color:var(--go-text)">You're here</span></div></div>
+            <div class="node" style="margin-left:34px"><span class="dot lock"><svg width="20" height="20" aria-hidden="true"><use href="#lock"/></svg></span><div><b style="color:var(--muted)">Answer the other side</b></div></div>
+            <div class="node"><span class="dot lock"><svg width="20" height="20" aria-hidden="true"><use href="#lock"/></svg></span><div><b style="color:var(--muted)">Sum up in one line</b></div></div>
+          </div>
+        </div>
+      </div>
+      <svg class="float" width="110" height="110" aria-hidden="true" style="right:2%;bottom:6%"><use href="#rival"/></svg>
+    </div>
+  </div>
+</section>
+
+<section class="tinted" id="languages" aria-labelledby="lang-h">
+  <div class="wrap row flip">
+    <div class="copy">
+      <span class="kicker">Your family's language</span>
+      <h2 id="lang-h">Practise in English. Read Sam's notes in yours.</h2>
+      <p>Every note comes in English with your language beside it, so a parent reading over your shoulder knows what to work on too. 简体中文, 繁體中文, 한국어, 日本語, Tiếng Việt, Español and Português.</p>
+    </div>
+    <div class="art">
+      <div class="phone" role="img" aria-label="A report with Sam's notes in English and Simplified Chinese beneath each one.">
+        <div class="screen" lang="zh-Hans">
+          <div class="s-h">你的报告</div>
+          <div style="font-size:12.5px;color:var(--muted);font-weight:700;margin-top:-6px" lang="en">Speech, 2 minutes</div>
+          <div class="s-card">
+            <span class="s-lab" style="color:var(--go-text)">继续保持</span>
+            <div style="font-weight:700" lang="en">Keep pairing a claim with an answer to the likely objection.</div>
+            <div class="tr">继续保持：提出观点时，紧接着回应对方可能的反对意见。</div>
+          </div>
+          <div class="s-card">
+            <span class="s-lab" style="color:var(--rust-text)">下次改进</span>
+            <div style="font-weight:700" lang="en">Make sure every sentence argues the topic you were given.</div>
+            <div class="tr">下次请确保每一句话都在论证给你的辩题。</div>
+          </div>
+          <div class="nums" lang="en"><div><b>142</b><span>words a minute</span></div><div><b>3</b><span>ums and likes</span></div><div><b>1:52</b><span>of your 2:00</span></div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="parents" aria-labelledby="parents-h">
+<section id="students" aria-labelledby="students-h">
   <div class="wrap">
-    <div class="stack">
-      <span class="eyebrow">For parents</span>
-      <h2 id="parents-h">No strangers, no chat, no public profile.</h2>
+    <div class="center">
+      <svg width="88" height="88" aria-hidden="true"><use href="#sam-smile"/></svg>
+      <h2 id="students-h">Made for students.</h2>
+      <p>Debate Coach is for ages 13 and up. Nobody else is in the room, so a parent never has to wonder who their child is talking to.</p>
     </div>
-    <div class="parents">
-      <div><h3>Practice with AI only</h3><p>The opponent and the coach are AI. Your child never talks to another person in the app.</p></div>
-      <div><h3>Recordings stay in the account</h3><p>Each practice is recorded so the coach can write the report. It's kept in your child's account.</p></div>
-      <div><h3>A note every week</h3><p>Turn on a weekly note to a parent: what was practised, for how long, and what the coach is working on.</p></div>
+    <div class="cards">
+      <div class="card"><svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="12" fill="var(--go-soft)"/><circle cx="22" cy="18" r="6" fill="none" stroke="var(--go)" stroke-width="3"/><path d="M11 35c2-6 6-8 11-8s9 2 11 8" stroke="var(--go)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><h3>AI only</h3><p>Sam and your opponents are AI. There's no chat and no public profile.</p></div>
+      <div class="card"><svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="12" fill="var(--sun-soft)"/><rect x="14" y="20" width="16" height="13" rx="3" fill="none" stroke="var(--ink)" stroke-width="3"/><path d="M17 20v-4a5 5 0 0 1 10 0v4" stroke="var(--ink)" stroke-width="3" fill="none"/></svg><h3>Recordings stay private</h3><p>Each practice is recorded so Sam can write the report. It stays in your account.</p></div>
+      <div class="card"><svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="12" fill="var(--rust-soft)"/><rect x="11" y="14" width="22" height="16" rx="3" fill="none" stroke="var(--rust)" stroke-width="3"/><path d="M12 16l10 7 10-7" stroke="var(--rust)" stroke-width="3" fill="none" stroke-linejoin="round"/></svg><h3>A weekly note</h3><p>Turn on a note to a parent each week: what was practised, for how long, and what Sam is working on.</p></div>
     </div>
   </div>
 </section>
 
-<section id="faq" aria-labelledby="faq-h">
+<section class="tinted" id="faq" aria-labelledby="faq-h">
   <div class="wrap">
-    <div class="stack">
-      <span class="eyebrow">Questions</span>
-      <h2 id="faq-h">Before you start</h2>
-    </div>
+    <div class="center"><h2 id="faq-h">Questions</h2></div>
     <div class="faq">
-      <div>
-        <details open><summary>Who is Debate Coach for?</summary><p>It's for students learning to speak and argue in English, from a first conversation to a full World Schools round.</p></details>
-        <details><summary>Do I need any experience?</summary><p>No. The coach explains each round before it starts and gives an example the first time you try something new.</p></details>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <details open><summary>Who is Debate Coach for?</summary><p>It's for students who want to speak up with confidence, whether that's in class, at an interview, in English as a second language or in a debate round.</p></details>
+        <details><summary>Do I need debate experience?</summary><p>No. Sam starts with one question and one minute, and builds from there. Full debates are there when you want them.</p></details>
         <details><summary>What do I need?</summary><p>You need a phone and a quiet place to talk. Earphones help, but you don't need them.</p></details>
+        <details><summary>Do I talk to other people?</summary><p>No. Sam and your opponents are AI, so you can practise whenever you like.</p></details>
       </div>
-      <div>
-        <details><summary>Do I talk to real people?</summary><p>No. Your opponent and your coach are AI, so you can practise whenever you like.</p></details>
+      <div style="display:flex;flex-direction:column;gap:12px">
         <details><summary>How much does it cost?</summary><p>Prices will be in the App Store and Google Play when the app launches.</p></details>
-        <details><summary>Which languages does it speak?</summary><p>The practice is always in English. The app and the coach's notes also come in Chinese, Korean, Japanese, Vietnamese, Spanish and Portuguese.</p></details>
-        <details><summary>When is it available?</summary><p>Debate Coach is in testing now. It's coming to iPhone and Android.</p></details>
+        <details><summary>Which languages does it support?</summary><p>You always practise in English. The app and Sam's notes also come in Simplified and Traditional Chinese, Korean, Japanese, Vietnamese, Spanish and Portuguese.</p></details>
+        <details><summary>Which debate formats are there?</summary><p>World Schools, British Parliamentary, Public Forum and Lincoln-Douglas, among others, with AI speakers in every other seat.</p></details>
+        <details><summary>When can I get it?</summary><p>Debate Coach is in testing now. It's coming to iPhone and Android.</p></details>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="final" id="get" aria-labelledby="get-h">
-  <div class="wrap">
-    <h2 id="get-h">Your next practice is four minutes away.</h2>
-    <p>Debate Coach is coming to iPhone and Android.</p>
-    <div class="stores" role="list" aria-label="Where to get the app" style="justify-content:center">
-      <div class="store" role="listitem"><small>Coming soon to the</small><b>App Store</b></div>
-      <div class="store" role="listitem"><small>Coming soon to</small><b>Google Play</b></div>
     </div>
   </div>
 </section>
 </main>
 
+<section class="final" id="get" aria-labelledby="get-h">
+  <div class="wrap center">
+    <svg width="96" height="96" aria-hidden="true" style="--sam:#fff;--sam-face:var(--go)"><use href="#sam-cheer"/></svg>
+    <h2 id="get-h">Your first practice takes one minute.</h2>
+    <p>Debate Coach is coming to iPhone and Android.</p>
+    <div class="stores" role="list" aria-label="Where to get the app">
+      <div class="store" role="listitem"><svg aria-hidden="true"><use href="#apple"/></svg><span><small>Coming soon</small><b>App Store</b></span></div>
+      <div class="store" role="listitem"><svg aria-hidden="true"><use href="#play"/></svg><span><small>Coming soon</small><b>Google Play</b></span></div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <span>© 2026 Debate Coach</span>
-    <nav class="links" aria-label="Footer"><a href="#how">How it works</a><a href="#parents">For parents</a><a href="#faq">Questions</a></nav>
+    <nav class="links" aria-label="Footer"><a href="#daily">How it works</a><a href="#students">For parents</a><a href="#faq">Questions</a></nav>
   </div>
 </footer>

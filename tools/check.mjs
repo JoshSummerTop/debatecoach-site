@@ -41,7 +41,7 @@ for (const [w, h, name] of [[1440, 900, 'desktop'], [390, 844, 'phone']]) {
 
 const og = await browser.newPage({ viewport: { width: 1200, height: 630 }, colorScheme: 'light' });
 await og.goto(url, { waitUntil: 'networkidle' });
-await og.addStyleTag({ content: '.top{display:none}.hero{padding-top:40px}.hero h1{font-size:60px}' });
+await og.addStyleTag({ content: 'header.top{border:0!important;padding-top:28px!important}.navlinks,.hero .note,.goals,main section,.final,footer{display:none!important}.hero{padding-block:24px 0!important}' });
 await og.screenshot({ path: join(site, 'og.png'), clip: { x: 0, y: 0, width: 1200, height: 630 } });
 await browser.close();
 console.log(problems ? `${problems} problem(s)` : 'no problems');
