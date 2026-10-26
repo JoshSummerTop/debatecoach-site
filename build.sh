@@ -16,7 +16,7 @@ DESC='Your coach listens to every word. Say your point out loud, and the moment 
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>$TITLE</title>
 <meta name="description" content="$DESC">
-<meta name="theme-color" content="#24252a">
+<meta name="theme-color" content="#0e7a70">
 <link rel="canonical" href="https://debatecoach.app/">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">

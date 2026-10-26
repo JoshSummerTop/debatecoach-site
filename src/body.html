@@ -1,29 +1,29 @@
 <style>
 /* Debate Coach (s385): Duolingo's standard of a landing page. Few words, one picture per idea, one button colour,
-   the coach (the logo's speech-bubble face) in every scene. Charcoal and white from the logo; teal for "go", rust for the
+   the coach (the logo's speech-bubble face) in every scene. Teal and white from the logo, teal also for "go"; charcoal for text, rust for the
    other side, a warm yellow for streaks and celebration. Nunito for everything: rounded, heavy headings. */
 :root{
   --bg:#ffffff; --tint:#f4f3f0; --paper:#ffffff; --ink:#24252a; --muted:#5b5d66; --line:#e6e4df;
-  --go:#0b7d71; --go-edge:#075a52; --go-ink:#ffffff; --go-soft:#e7f4f1; --go-text:#0a6a60;
+  --go:#0e7a70; --go-edge:#075a52; --go-ink:#ffffff; --go-soft:#e7f4f1; --go-text:#0a6a60;
   --rust:#c2552b; --rust-soft:#fbeee7; --rust-text:#a8441c;
   --sun:#f2b33d; --sun-soft:#fdf3dc;
-  --sam:#24252a; --sam-face:#ffffff;
+  --sam:#0e7a70; --sam-face:#ffffff;
   --frame:#24252a; --screen:#ffffff; --shadow:0 18px 40px rgba(36,37,42,.12);
   --font:"Nunito",ui-rounded,"SF Pro Rounded",system-ui,sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#17181c; --tint:#1f2026; --paper:#202127; --ink:#f4f3f0; --muted:#b3b1ab; --line:#2f3038;
-  --go:#0b7d71; --go-edge:#064a44; --go-ink:#ffffff; --go-soft:#16302d; --go-text:#5fd3c3;
+  --go:#0e7a70; --go-edge:#064a44; --go-ink:#ffffff; --go-soft:#16302d; --go-text:#5fd3c3;
   --rust:#d96a3e; --rust-soft:#3a241b; --rust-text:#f0a07c;
   --sun:#f2b33d; --sun-soft:#3a3020;
-  --sam:#f4f3f0; --sam-face:#24252a;
+  --sam:#1a9e8f; --sam-face:#ffffff;
   --frame:#0c0d10; --screen:#202127; --shadow:0 18px 40px rgba(0,0,0,.45); color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#17181c; --tint:#1f2026; --paper:#202127; --ink:#f4f3f0; --muted:#b3b1ab; --line:#2f3038;
-  --go:#0b7d71; --go-edge:#064a44; --go-ink:#ffffff; --go-soft:#16302d; --go-text:#5fd3c3;
+  --go:#0e7a70; --go-edge:#064a44; --go-ink:#ffffff; --go-soft:#16302d; --go-text:#5fd3c3;
   --rust:#d96a3e; --rust-soft:#3a241b; --rust-text:#f0a07c;
   --sun:#f2b33d; --sun-soft:#3a3020;
-  --sam:#f4f3f0; --sam-face:#24252a;
+  --sam:#1a9e8f; --sam-face:#ffffff;
   --frame:#0c0d10; --screen:#202127; --shadow:0 18px 40px rgba(0,0,0,.45); color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -198,7 +198,7 @@ footer .links a:hover{color:var(--ink)}
 <a class="skip" href="#main">Skip to the content</a>
 <header class="wrap top">
   <a class="brand" href="#top" aria-label="Debate Coach, back to the top">
-    <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#24252a"/><path d="M22 78 V31 A9 9 0 0 1 31 22 H50 A28 28 0 0 1 78 50 A28 28 0 0 1 50 78 Z" fill="none" stroke="#fff" stroke-width="5"/><circle cx="42" cy="45" r="3.3" fill="#fff"/><circle cx="56" cy="45" r="3.3" fill="#fff"/><path d="M42 55.5 A14 14 0 0 0 56 55.5" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>
+    <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#0e7a70"/><path d="M22 78 V31 A9 9 0 0 1 31 22 H50 A28 28 0 0 1 78 50 A28 28 0 0 1 50 78 Z" fill="none" stroke="#fff" stroke-width="5"/><circle cx="42" cy="45" r="3.3" fill="#fff"/><circle cx="56" cy="45" r="3.3" fill="#fff"/><path d="M42 55.5 A14 14 0 0 0 56 55.5" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>
     Debate Coach
   </a>
   <nav class="navlinks" aria-label="Main">
