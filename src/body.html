@@ -100,7 +100,7 @@ section{padding-block:72px}
 .s-card{border:2px solid var(--line);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:6px}
 .s-today{background:var(--go);color:#fff;border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:9px}
 .s-today .s-lab{color:#ffffff}
-.s-btn{min-height:42px;border-radius:13px;background:#fff;color:var(--go-edge);font-weight:900;display:flex;align-items:center;justify-content:center;letter-spacing:.05em;text-transform:uppercase;font-size:13px;box-shadow:0 3px 0 rgba(0,0,0,.18)}
+.s-btn{min-height:42px;padding:0 10px;text-align:center;border-radius:13px;background:#fff;color:var(--go-edge);font-weight:900;display:flex;align-items:center;justify-content:center;letter-spacing:.05em;text-transform:uppercase;font-size:13px;box-shadow:0 3px 0 rgba(0,0,0,.18)}
 .s-btn.go{background:var(--go);color:#fff;box-shadow:0 3px 0 var(--go-edge)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{display:inline-flex;align-items:center;gap:5px;min-height:26px;padding:0 10px;border-radius:999px;font-size:12.5px;font-weight:800;background:var(--tint);color:var(--ink)}
@@ -124,6 +124,8 @@ section{padding-block:72px}
 .dot.lock{background:var(--line);box-shadow:none}
 .node b{font-size:14px;display:block}
 .node span{font-size:11.5px;color:var(--muted);font-weight:700}
+.langs{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.langs li{min-height:34px;display:inline-flex;align-items:center;padding:0 12px;border-radius:999px;background:var(--paper);border:2px solid var(--line);font-weight:800;font-size:15px}
 .tr{font-size:12.5px;color:var(--muted);border-left:3px solid var(--line);padding-left:8px;font-weight:600}
 .float{position:absolute;z-index:2}
 
@@ -138,7 +140,7 @@ section{padding-block:72px}
 /* questions */
 .faq{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin-top:32px}
 details{border:2px solid var(--line);border-radius:18px;padding:0 20px;background:var(--paper)}
-summary{cursor:pointer;font-weight:800;font-size:18px;min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none}
+summary{cursor:pointer;font-weight:800;font-size:18px;min-height:60px;padding-block:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none}
 summary::-webkit-details-marker{display:none}
 summary::after{content:"+";font-size:26px;font-weight:700;color:var(--muted);flex:none}
 details[open] summary::after{content:"−"}
@@ -164,7 +166,13 @@ footer .links a:hover{color:var(--ink)}
   .hero .lead{margin-inline:auto}
   .hero .stores{justify-content:center}
   .row.flip .art{order:0}
-  .copy{max-width:none}
+  .copy{max-width:560px;margin-inline:auto;text-align:center;align-items:center}
+  .store{justify-content:center}
+  .goals .wrap{justify-content:center}
+  .goals .lab{flex-basis:100%;text-align:center;margin-right:0}
+  .langs{justify-content:center}
+  footer .wrap{flex-direction:column;justify-content:center;text-align:center}
+  footer .links{justify-content:center}
   .art{min-height:0}
   section{padding-block:56px}
   .cards,.faq{grid-template-columns:1fr}
@@ -325,7 +333,8 @@ footer .links a:hover{color:var(--ink)}
     <div class="copy">
       <span class="kicker">Your family's language</span>
       <h2 id="lang-h">Practise in English. Read your coach's notes in yours.</h2>
-      <p>You speak and listen in English. Your written report shows each note in English with your language beside it, so you always know exactly what to work on, and so does anyone helping you. 简体中文, 繁體中文, 한국어, 日本語, Tiếng Việt, Español and Português.</p>
+      <p>You speak and listen in English. Your written report shows each note in English with your language beside it, so you always know exactly what to work on, and so does anyone helping you.</p>
+      <ul class="langs" aria-label="Languages for menus and written notes"><li lang="en">English</li><li lang="zh-Hans">简体中文</li><li lang="zh-Hant">繁體中文</li><li lang="ko">한국어</li><li lang="ja">日本語</li><li lang="vi">Tiếng Việt</li><li lang="es">Español</li><li lang="pt">Português</li></ul>
     </div>
     <div class="art">
       <div class="phone" role="img" aria-label="A report with the coach's notes in English and Simplified Chinese beneath each one.">
