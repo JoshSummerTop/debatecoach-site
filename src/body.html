@@ -1,7 +1,8 @@
 <style>
-/* Debate Coach (s385): Duolingo's standard of a landing page. Few words, one picture per idea, one button colour,
-   the coach (the logo's speech-bubble face) in every scene. Teal and white from the logo, teal also for "go"; charcoal for text, rust for the
-   other side, a warm yellow for streaks and celebration. Nunito for everything: rounded, heavy headings. */
+/* Debate Coach (s385): Duolingo's standard (few words, one picture per idea) in debate's own look. Two sides: teal for you,
+   rust for the other side. The round in the hero (motion, their speech, your turn on the clock, the coach's answer), the report
+   as a judge's ballot, buttons shaped like the logo's speech bubble. Bricolage Grotesque headings, Instrument Sans body,
+   Spline Sans Mono for clocks and labels. */
 :root{
   --bg:#ffffff; --tint:#f4f3f0; --paper:#ffffff; --ink:#24252a; --muted:#5b5d66; --line:#e6e4df;
   --go:#0e7a70; --go-edge:#075a52; --go-ink:#ffffff; --go-soft:#e7f4f1; --go-text:#0a6a60;
@@ -9,7 +10,10 @@
   --sun:#f2b33d; --sun-soft:#fdf3dc;
   --sam:#0e7a70; --sam-face:#ffffff;
   --frame:#24252a; --screen:#ffffff; --shadow:0 18px 40px rgba(36,37,42,.12);
-  --font:"Nunito",ui-rounded,"SF Pro Rounded",system-ui,sans-serif;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;
+  --mono:"Spline Sans Mono",ui-monospace,Menlo,monospace;
+  --ballot:#fffdf6; --ballot-line:#ece6d6;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#17181c; --tint:#1f2026; --paper:#202127; --ink:#f4f3f0; --muted:#b3b1ab; --line:#2f3038;
@@ -17,23 +21,23 @@
   --rust:#d96a3e; --rust-soft:#3a241b; --rust-text:#f0a07c;
   --sun:#f2b33d; --sun-soft:#3a3020;
   --sam:#1a9e8f; --sam-face:#ffffff;
-  --frame:#0c0d10; --screen:#202127; --shadow:0 18px 40px rgba(0,0,0,.45); color-scheme:dark}}
+  --frame:#0c0d10; --screen:#202127; --shadow:0 18px 40px rgba(0,0,0,.45); --ballot:#26261f; --ballot-line:#3a3a30; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#17181c; --tint:#1f2026; --paper:#202127; --ink:#f4f3f0; --muted:#b3b1ab; --line:#2f3038;
   --go:#0e7a70; --go-edge:#064a44; --go-ink:#ffffff; --go-soft:#16302d; --go-text:#5fd3c3;
   --rust:#d96a3e; --rust-soft:#3a241b; --rust-text:#f0a07c;
   --sun:#f2b33d; --sun-soft:#3a3020;
   --sam:#1a9e8f; --sam-face:#ffffff;
-  --frame:#0c0d10; --screen:#202127; --shadow:0 18px 40px rgba(0,0,0,.45); color-scheme:dark}
+  --frame:#0c0d10; --screen:#202127; --shadow:0 18px 40px rgba(0,0,0,.45); --ballot:#26261f; --ballot-line:#3a3a30; color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important}}
-body{background:var(--bg);color:var(--ink);font-family:var(--font);margin:0;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);margin:0;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
 .wrap{max-width:1080px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-h1,h2,h3{margin:0;font-weight:900;letter-spacing:-.01em;text-wrap:balance}
+h1,h2,h3{margin:0;font-family:var(--display);font-weight:800;letter-spacing:-.025em;text-wrap:balance}
 h1{font-size:clamp(40px,5.6vw,60px);line-height:1.06}
 h2{font-size:clamp(32px,4.2vw,46px);line-height:1.1}
-h3{font-size:21px;line-height:1.25;font-weight:800}
+h3{font-size:21px;line-height:1.25;font-weight:700;letter-spacing:-.01em}
 p{margin:0}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--go);outline-offset:3px;border-radius:10px}
@@ -42,7 +46,7 @@ a{color:inherit}
 
 /* top bar */
 .top{display:flex;align-items:center;justify-content:space-between;padding-block:14px;border-bottom:2px solid var(--line)}
-.brand{white-space:nowrap;display:flex;align-items:center;gap:10px;font-weight:900;font-size:22px;text-decoration:none;min-height:44px;color:var(--ink)}
+.brand{white-space:nowrap;display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:22px;text-decoration:none;min-height:44px;color:var(--ink)}
 .brand svg{width:36px;height:36px;flex:none}
 .navlinks{display:flex;gap:4px;align-items:center;font-size:15px;font-weight:800}
 .navlinks a{text-decoration:none;min-height:44px;display:inline-flex;align-items:center;padding-inline:12px;border-radius:12px;color:var(--muted)}
@@ -54,9 +58,9 @@ a{color:inherit}
 .theme .sun{display:none}
 :root[data-theme="dark"] .theme .sun{display:block}:root[data-theme="dark"] .theme .moon{display:none}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .theme .sun{display:block}:root:not([data-theme="light"]) .theme .moon{display:none}}
-/* the button: one colour, a pressed edge like a key */
-.btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:16px;background:var(--go);color:var(--go-ink);font-weight:900;font-size:16px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;box-shadow:0 4px 0 var(--go-edge);transition:transform .08s, box-shadow .08s}
-.btn:active{transform:translateY(4px);box-shadow:0 0 0 var(--go-edge)}
+/* the button: the logo's speech bubble, square at the bottom left */
+.btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border-radius:14px 26px 26px 4px;background:var(--go);color:var(--go-ink);font-weight:700;font-size:16px;text-decoration:none;transition:background .15s}
+.btn:hover{background:var(--go-edge)}
 .navlinks .btn{min-height:44px;padding:0 18px;font-size:14px;color:var(--go-ink);margin-left:8px}
 .navlinks .btn:hover{background:var(--go);color:var(--go-ink)}
 
@@ -68,7 +72,7 @@ a{color:inherit}
 .store svg{width:24px;height:24px;flex:none}
 .store span{display:flex;flex-direction:column;line-height:1.15}
 .store small{font-size:12px;opacity:.85;font-weight:700}
-.store b{font-size:19px;font-weight:900;white-space:nowrap}
+.store b{font-family:var(--display);font-size:19px;font-weight:700;white-space:nowrap}
 .note{font-size:15px;color:var(--muted);margin-top:14px;font-weight:700}
 .scene{width:100%;height:auto;display:block}
 .bob{animation:bob 3.2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
@@ -78,8 +82,8 @@ a{color:inherit}
 /* goals strip */
 .goals{border-block:2px solid var(--line);background:var(--bg)}
 .goals .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;padding-block:20px}
-.goals .lab{font-weight:900;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:6px}
-.pill{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border-radius:999px;border:2px solid var(--line);font-weight:800;font-size:16px}
+.goals .lab{font-family:var(--mono);font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+.pill{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border-radius:12px 20px 20px 4px;border:2px solid var(--line);font-weight:800;font-size:16px}
 .pill i{width:10px;height:10px;border-radius:50%;display:inline-block}
 
 /* feature rows */
@@ -88,20 +92,21 @@ section{padding-block:72px}
 .row.flip .art{order:-1}
 .copy{display:flex;flex-direction:column;gap:16px;max-width:480px}
 .copy p{font-size:19px;color:var(--muted);font-weight:600}
-.kicker{font-weight:900;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--go-text)}
+.kicker{font-family:var(--mono);font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--go-text);display:inline-flex;align-items:center;gap:8px}
+.kicker::before{content:"";width:12px;height:12px;background:var(--go);border-radius:3px 6px 6px 1px;flex:none}
 .art{display:flex;justify-content:center;align-items:center;position:relative;min-height:420px}
 .tinted{background:var(--tint)}
 
 /* phones */
 .phone{width:280px;border-radius:40px;background:var(--frame);padding:10px;box-shadow:var(--shadow);position:relative;z-index:1}
 .screen{background:var(--screen);border-radius:31px;overflow:hidden;padding:26px 16px 18px;display:flex;flex-direction:column;gap:11px;min-height:520px;font-size:14px;line-height:1.4}
-.s-h{font-weight:900;font-size:20px}
-.s-lab{font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.s-h{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.01em}
+.s-lab{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .s-card{border:2px solid var(--line);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:6px}
 .s-today{background:var(--go);color:#fff;border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:9px}
 .s-today .s-lab{color:#ffffff}
-.s-btn{min-height:42px;padding:0 10px;text-align:center;border-radius:13px;background:#fff;color:var(--go-edge);font-weight:900;display:flex;align-items:center;justify-content:center;letter-spacing:.05em;text-transform:uppercase;font-size:13px;box-shadow:0 3px 0 rgba(0,0,0,.18)}
-.s-btn.go{background:var(--go);color:#fff;box-shadow:0 3px 0 var(--go-edge)}
+.s-btn{min-height:42px;padding:0 10px;text-align:center;border-radius:11px 20px 20px 3px;background:#fff;color:var(--go-edge);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px}
+.s-btn.go{background:var(--go);color:#fff}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{display:inline-flex;align-items:center;gap:5px;min-height:26px;padding:0 10px;border-radius:999px;font-size:12.5px;font-weight:800;background:var(--tint);color:var(--ink)}
 .chip.on{background:var(--go-soft);color:var(--go-text)}
@@ -114,7 +119,7 @@ section{padding-block:72px}
 .bubble{background:var(--tint);border-radius:16px 16px 16px 4px;padding:10px 12px;font-weight:700}
 .nums{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
 .nums div{border:2px solid var(--line);border-radius:12px;padding:7px;display:flex;flex-direction:column}
-.nums b{font-size:17px;font-weight:900}
+.nums b{font-size:17px;font-weight:700}
 .nums span{font-size:10.5px;color:var(--muted);font-weight:700;line-height:1.25}
 .path{display:flex;flex-direction:column;gap:12px;padding-top:4px}
 .node{display:flex;align-items:center;gap:12px}
@@ -159,6 +164,48 @@ footer .links{display:flex;gap:4px;flex-wrap:wrap}
 footer .links a{text-decoration:none;min-height:44px;display:inline-flex;align-items:center;padding-inline:10px;border-radius:10px}
 footer .links a:hover{color:var(--ink)}
 
+/* the round: a motion, the other side, your turn on the clock, the coach's answer */
+.round{display:flex;flex-direction:column;gap:12px;max-width:470px;width:100%;justify-self:center;text-align:left}
+.motion{border:2px solid var(--line);border-radius:16px;padding:12px 16px;display:flex;flex-direction:column;gap:2px;background:var(--paper)}
+.mlab,.who,.clock,.b-head,.b-k,.b-stamp{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.mlab{color:var(--muted)}
+.motion b{font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.01em}
+.turn{padding:12px 16px 14px;display:flex;flex-direction:column;gap:6px;max-width:88%;font-weight:500}
+.turn p{font-size:16px;line-height:1.45}
+.who{display:flex;align-items:center;gap:8px}
+.clock{margin-left:auto;padding:2px 8px;border-radius:6px;background:var(--tint);color:var(--ink)}
+.them{align-self:flex-end;background:var(--rust-soft);border-radius:20px 20px 4px 20px}
+.them .who{color:var(--rust-text)}
+.you{align-self:flex-start;background:var(--go-soft);border:2px solid var(--go);border-radius:20px 20px 20px 4px;position:relative}
+.you .who{color:var(--go-text)}
+.you .clock{background:var(--go);color:#fff}
+.dial{width:14px;height:14px;border-radius:50%;background:conic-gradient(var(--go) 0 70%, transparent 70% 100%);border:2px solid var(--go)}
+.wave{display:flex;gap:3px;align-items:center;height:18px}
+.wave i{width:4px;border-radius:2px;background:var(--go);height:40%;animation:talk 1s ease-in-out infinite}
+.wave i:nth-child(2){animation-delay:-.2s}.wave i:nth-child(3){animation-delay:-.5s}.wave i:nth-child(4){animation-delay:-.1s}.wave i:nth-child(5){animation-delay:-.7s}.wave i:nth-child(6){animation-delay:-.3s}.wave i:nth-child(7){animation-delay:-.6s}
+@keyframes talk{0%,100%{height:30%}50%{height:100%}}
+.coach{align-self:flex-start;background:var(--go);color:#fff;border-radius:20px 20px 20px 4px;margin-left:24px}
+.coach .who{color:#e3f4f1}
+
+/* the ballot: a judge's sheet, not an app card */
+.ballot{width:340px;max-width:100%;background:var(--ballot);border:2px solid var(--ballot-line);border-radius:6px;padding:20px 20px 16px;box-shadow:var(--shadow);transform:rotate(-1.5deg);display:flex;flex-direction:column;gap:12px;background-image:repeating-linear-gradient(to bottom,transparent 0 27px,var(--ballot-line) 27px 28px);background-position:0 54px}
+.b-head{display:flex;justify-content:space-between;border-bottom:3px double var(--ink);padding-bottom:8px;color:var(--ink);font-size:13px}
+.b-head span:first-child{font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:.02em}
+.b-line{display:flex;gap:10px;align-items:baseline;font-weight:600;font-size:15px}
+.b-k{color:var(--muted);font-size:11px;flex:none}
+.b-box{border-left:4px solid var(--go);padding:4px 0 4px 12px;display:flex;flex-direction:column;gap:4px;background:var(--ballot)}
+.b-box.change{border-color:var(--rust)}
+.b-box.keep .b-k{color:var(--go-text)}.b-box.change .b-k{color:var(--rust-text)}
+.b-box p{font-size:15px;line-height:1.4;font-weight:600}
+.b-box .tr{font-size:13.5px;font-weight:500}
+.b-figs{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--ballot-line);border-radius:4px;background:var(--ballot)}
+.b-figs div{padding:8px;display:flex;flex-direction:column;border-right:2px solid var(--ballot-line)}
+.b-figs div:last-child{border-right:0}
+.b-figs b{font-family:var(--mono);font-size:18px;font-weight:600}
+.b-figs span{font-size:11.5px;color:var(--muted);font-weight:600;line-height:1.25}
+.b-sign{display:flex;align-items:center;gap:8px;font-weight:700;padding-top:4px;border-top:1px dashed var(--ballot-line)}
+.b-stamp{margin-left:auto;color:var(--go-text);border:2px solid var(--go-text);border-radius:4px;padding:2px 6px;transform:rotate(-4deg)}
+
 @media (max-width:900px){
   .navlinks a:not(.btn){display:none}
   .hero,.row{grid-template-columns:1fr;gap:28px}
@@ -178,6 +225,7 @@ footer .links a:hover{color:var(--ink)}
   .cards,.faq{grid-template-columns:1fr}
 }
 @media (max-width:420px){
+  .ballot{transform:none}
   .brand{font-size:18px;gap:8px}
   .brand svg{width:32px;height:32px}
   .navlinks .btn{padding:0 12px;font-size:13px;letter-spacing:.04em}
@@ -230,15 +278,12 @@ footer .links a:hover{color:var(--ink)}
     </div>
     <p class="note">For iPhone and Android. You practise in English; menus and written notes come in eight languages.</p>
   </div>
-  <svg class="scene" viewBox="0 0 520 440" role="img" aria-label="The coach speaking up with a timer and a streak flame beside them, while a rust-coloured opponent waits for its turn.">
-    <circle cx="270" cy="230" r="190" fill="var(--tint)"/>
-    <g class="bob"><svg x="185" y="70" width="250" height="250"><use href="#sam-talk"/></svg></g>
-    <g fill="none" stroke="var(--go)" stroke-width="7" stroke-linecap="round"><path d="M448 150 q22 30 0 60"/><path d="M472 128 q38 52 0 104"/></g>
-    <g class="bob2"><svg x="30" y="262" width="130" height="130"><use href="#rival"/></svg></g>
-    <g transform="translate(330 300)"><rect width="150" height="60" rx="30" fill="var(--paper)" stroke="var(--line)" stroke-width="3"/><circle cx="34" cy="30" r="15" fill="none" stroke="var(--go)" stroke-width="5"/><path d="M34 21 V30 L40 34" stroke="var(--go)" stroke-width="4" fill="none" stroke-linecap="round"/><text x="62" y="39" font-family="Nunito,sans-serif" font-weight="900" font-size="26" fill="var(--ink)">1:00</text></g>
-    <g transform="translate(60 70)"><rect width="104" height="56" rx="28" fill="var(--sun-soft)"/><svg x="14" y="10" width="36" height="36"><use href="#flame"/></svg><text x="56" y="38" font-family="Nunito,sans-serif" font-weight="900" font-size="24" fill="var(--ink)">12</text></g>
-    <rect x="452" y="70" width="18" height="18" rx="4" fill="var(--rust)" transform="rotate(18 461 79)"/><circle cx="210" cy="60" r="8" fill="var(--sun)"/><rect x="470" y="380" width="14" height="22" rx="4" fill="var(--go)" transform="rotate(-24 477 391)"/><circle cx="230" cy="410" r="7" fill="var(--rust)"/>
-  </svg>
+  <div class="round" role="img" aria-label="A round on the phone. The motion: this house would ban homework. The opponent argues homework teaches discipline. It's your turn with 42 seconds left, and you answer with an example. Then your coach says the answer was clear and to say why their point fails first next time.">
+    <div class="motion"><span class="mlab">Motion</span><b>This house would ban homework.</b></div>
+    <div class="turn them"><span class="who"><svg width="26" height="26" aria-hidden="true"><use href="#rival"/></svg>Opponent<span class="clock">1:00</span></span><p>Homework teaches discipline. Without it, students stop practising at home.</p></div>
+    <div class="turn you"><span class="who"><span class="dial" aria-hidden="true"></span>Your turn<span class="clock">0:42</span></span><p>Discipline doesn't need busywork. When my sister's school dropped homework, reading at home went up.</p><span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+    <div class="turn coach"><span class="who"><svg width="26" height="26" aria-hidden="true" style="--sam:#fff;--sam-face:var(--go)"><use href="#sam-smile"/></svg>Your coach</span><p>Clear answer, and a real example. Next time, say why their point fails before you give yours.</p></div>
+  </div>
 </div>
 
 <div class="goals" aria-label="What people practise for">
@@ -264,7 +309,7 @@ footer .links a:hover{color:var(--ink)}
         <div class="screen">
           <div style="display:flex;justify-content:space-between;align-items:center"><span class="s-h">Hi Mia</span><span class="chips"><span class="chip sun"><svg width="14" height="14" aria-hidden="true"><use href="#flame"/></svg>5</span><span class="chip">2 of 3 min</span></span></div>
           <div class="s-today">
-            <div style="display:flex;gap:10px;align-items:center"><svg width="40" height="40" aria-hidden="true" style="color:#fff"><use href="#sam-smile" style="--sam:#fff;--sam-face:var(--go)"/></svg><div><div class="s-lab">Today's three minutes</div><div style="font-weight:900;font-size:16px">Answer one argument</div></div></div>
+            <div style="display:flex;gap:10px;align-items:center"><svg width="40" height="40" aria-hidden="true" style="color:#fff"><use href="#sam-smile" style="--sam:#fff;--sam-face:var(--go)"/></svg><div><div class="s-lab">Today's three minutes</div><div style="font-weight:700;font-size:16px">Answer one argument</div></div></div>
             <div style="font-weight:700">"Homework should be banned." Say why it's wrong, with an example.</div>
             <div class="s-btn">Start</div>
           </div>
@@ -289,7 +334,7 @@ footer .links a:hover{color:var(--ink)}
       <div class="phone" role="img" aria-label="The end of a practice. The coach cheers and says the reason was clear and to add an example next time. Two chips read Gave a reason and Add an example, and the streak reaches day one.">
         <div class="screen" style="align-items:stretch">
           <div style="display:flex;justify-content:center;padding-top:6px"><svg width="110" height="110" aria-hidden="true"><use href="#sam-cheer"/></svg></div>
-          <div style="text-align:center;font-weight:900;font-size:24px">Nice one</div>
+          <div style="text-align:center;font-family:var(--display);font-weight:800;font-size:24px">Nice one</div>
           <div class="bubble">"You gave a clear reason. Next time, add one example from your own class."</div>
           <div class="chips" style="justify-content:center"><span class="chip on">You did: gave a reason</span><span class="chip next">Next: add an example</span></div>
           <div class="s-card" style="flex-direction:row;align-items:center;gap:10px"><svg width="26" height="26" aria-hidden="true"><use href="#flame"/></svg><div><b>Day 1 of your streak</b><div style="font-size:12px;color:var(--muted);font-weight:600">Your full report is on its way.</div></div></div>
@@ -323,7 +368,6 @@ footer .links a:hover{color:var(--ink)}
           </div>
         </div>
       </div>
-      <svg class="float" width="110" height="110" aria-hidden="true" style="right:2%;bottom:6%"><use href="#rival"/></svg>
     </div>
   </div>
 </section>
@@ -337,22 +381,13 @@ footer .links a:hover{color:var(--ink)}
       <ul class="langs" aria-label="Languages for menus and written notes"><li lang="en">English</li><li lang="zh-Hans">简体中文</li><li lang="zh-Hant">繁體中文</li><li lang="ko">한국어</li><li lang="ja">日本語</li><li lang="vi">Tiếng Việt</li><li lang="es">Español</li><li lang="pt">Português</li></ul>
     </div>
     <div class="art">
-      <div class="phone" role="img" aria-label="A report with the coach's notes in English and Simplified Chinese beneath each one.">
-        <div class="screen" lang="zh-Hans">
-          <div class="s-h">你的报告</div>
-          <div style="font-size:12.5px;color:var(--muted);font-weight:700;margin-top:-6px" lang="en">Speech, 2 minutes</div>
-          <div class="s-card">
-            <span class="s-lab" style="color:var(--go-text)">继续保持</span>
-            <div style="font-weight:700" lang="en">Keep pairing a claim with an answer to the likely objection.</div>
-            <div class="tr">继续保持：提出观点时，紧接着回应对方可能的反对意见。</div>
-          </div>
-          <div class="s-card">
-            <span class="s-lab" style="color:var(--rust-text)">下次改进</span>
-            <div style="font-weight:700" lang="en">Make sure every sentence argues the topic you were given.</div>
-            <div class="tr">下次请确保每一句话都在论证给你的辩题。</div>
-          </div>
-          <div class="nums" lang="en"><div><b>142</b><span>words a minute</span></div><div><b>3</b><span>ums and likes</span></div><div><b>1:52</b><span>of your 2:00</span></div></div>
-        </div>
+      <div class="ballot" role="img" aria-label="A ballot for a two-minute speech on banning homework. Keep doing and Change next time, each in English with the Simplified Chinese beneath, then three figures and the coach's signature.">
+        <div class="b-head"><span>Ballot</span><span>Speech, 2:00</span></div>
+        <div class="b-line"><span class="b-k">Motion</span><span>This house would ban homework</span></div>
+        <div class="b-box keep"><span class="b-k">Keep doing · 继续保持</span><p lang="en">Keep pairing a claim with an answer to the likely objection.</p><p class="tr" lang="zh-Hans">提出观点时，紧接着回应对方可能的反对意见。</p></div>
+        <div class="b-box change"><span class="b-k">Change next time · 下次改进</span><p lang="en">Make sure every sentence argues the topic you were given.</p><p class="tr" lang="zh-Hans">确保每一句话都在论证给你的辩题。</p></div>
+        <div class="b-figs"><div><b>142</b><span>words a minute</span></div><div><b>3</b><span>ums and likes</span></div><div><b>1:52</b><span>of your 2:00</span></div></div>
+        <div class="b-sign"><svg width="30" height="30" aria-hidden="true"><use href="#sam-smile"/></svg><span>Your coach</span><span class="b-stamp">Judged in 1:48</span></div>
       </div>
     </div>
   </div>
