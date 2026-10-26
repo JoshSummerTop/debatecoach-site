@@ -18,13 +18,13 @@
 <meta property="og:description" content="Your coach listens to every word. Say your point out loud, and the moment you stop, you hear what worked and the one thing to change. Coming to iPhone and Android.">
 <meta property="og:image" content="https://debatecoach.app/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@500;600&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@500;600&display=swap">
 </head>
 <body>
 <style>
 /* Debate Coach (s385): Duolingo's standard (few words, one picture per idea) in debate's own look. Two sides: teal for you,
    rust for the other side. The round in the hero (motion, their speech, your turn on the clock, the coach's answer), the report
-   as a judge's ballot, buttons shaped like the logo's speech bubble. Bricolage Grotesque headings, Instrument Sans body,
+   as a judge's ballot, buttons shaped like the logo's speech bubble. Instrument Sans throughout (Shadow Judge's face, the app's face),
    Spline Sans Mono for clocks and labels. */
 :root{
   --bg:#ffffff; --tint:#f4f3f0; --paper:#ffffff; --ink:#24252a; --muted:#5b5d66; --line:#e6e4df;
@@ -33,7 +33,7 @@
   --sun:#f2b33d; --sun-soft:#fdf3dc;
   --sam:#0e7a70; --sam-face:#ffffff;
   --frame:#24252a; --screen:#ffffff; --shadow:0 18px 40px rgba(36,37,42,.12);
-  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --display:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;
   --body:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;
   --mono:"Spline Sans Mono",ui-monospace,Menlo,monospace;
   --ballot:#fffdf6; --ballot-line:#ece6d6;
@@ -57,21 +57,21 @@ html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important}}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);margin:0;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
 .wrap{max-width:1080px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-h1,h2,h3{margin:0;font-family:var(--display);font-weight:800;letter-spacing:-.025em;text-wrap:balance}
+h1,h2,h3{margin:0;font-family:var(--display);font-weight:700;letter-spacing:-.03em;text-wrap:balance}
 h1{font-size:clamp(40px,5.6vw,60px);line-height:1.06}
 h2{font-size:clamp(32px,4.2vw,46px);line-height:1.1}
 h3{font-size:21px;line-height:1.25;font-weight:700;letter-spacing:-.01em}
 p{margin:0}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--go);outline-offset:3px;border-radius:10px}
-.skip{position:absolute;left:12px;top:-60px;background:var(--paper);color:var(--ink);padding:12px 16px;border-radius:12px;z-index:5;font-weight:800}
+.skip{position:absolute;left:12px;top:-60px;background:var(--paper);color:var(--ink);padding:12px 16px;border-radius:12px;z-index:5;font-weight:700}
 .skip:focus{top:12px}
 
 /* top bar */
 .top{display:flex;align-items:center;justify-content:space-between;padding-block:14px;border-bottom:2px solid var(--line)}
-.brand{white-space:nowrap;display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:22px;text-decoration:none;min-height:44px;color:var(--ink)}
+.brand{white-space:nowrap;display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:22px;text-decoration:none;min-height:44px;color:var(--ink)}
 .brand svg{width:36px;height:36px;flex:none}
-.navlinks{display:flex;gap:4px;align-items:center;font-size:15px;font-weight:800}
+.navlinks{display:flex;gap:4px;align-items:center;font-size:15px;font-weight:700}
 .navlinks a{text-decoration:none;min-height:44px;display:inline-flex;align-items:center;padding-inline:12px;border-radius:12px;color:var(--muted)}
 .navlinks a:hover{color:var(--ink);background:var(--tint)}
 
@@ -106,7 +106,7 @@ a{color:inherit}
 .goals{border-block:2px solid var(--line);background:var(--bg)}
 .goals .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;padding-block:20px}
 .goals .lab{font-family:var(--mono);font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:6px}
-.pill{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border-radius:12px 20px 20px 4px;border:2px solid var(--line);font-weight:800;font-size:16px}
+.pill{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border-radius:12px 20px 20px 4px;border:2px solid var(--line);font-weight:700;font-size:16px}
 .pill i{width:10px;height:10px;border-radius:50%;display:inline-block}
 
 /* feature rows */
@@ -123,7 +123,7 @@ section{padding-block:72px}
 /* phones */
 .phone{width:280px;border-radius:40px;background:var(--frame);padding:10px;box-shadow:var(--shadow);position:relative;z-index:1}
 .screen{background:var(--screen);border-radius:31px;overflow:hidden;padding:26px 16px 18px;display:flex;flex-direction:column;gap:11px;min-height:520px;font-size:14px;line-height:1.4}
-.s-h{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.01em}
+.s-h{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.01em}
 .s-lab{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .s-card{border:2px solid var(--line);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:6px}
 .s-today{background:var(--go);color:#fff;border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:9px}
@@ -131,7 +131,7 @@ section{padding-block:72px}
 .s-btn{min-height:42px;padding:0 10px;text-align:center;border-radius:11px 20px 20px 3px;background:#fff;color:var(--go-edge);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px}
 .s-btn.go{background:var(--go);color:#fff}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{display:inline-flex;align-items:center;gap:5px;min-height:26px;padding:0 10px;border-radius:999px;font-size:12.5px;font-weight:800;background:var(--tint);color:var(--ink)}
+.chip{display:inline-flex;align-items:center;gap:5px;min-height:26px;padding:0 10px;border-radius:999px;font-size:12.5px;font-weight:700;background:var(--tint);color:var(--ink)}
 .chip.on{background:var(--go-soft);color:var(--go-text)}
 .chip.next{background:var(--rust-soft);color:var(--rust-text)}
 .chip.sun{background:var(--sun-soft);color:var(--ink)}
@@ -153,7 +153,7 @@ section{padding-block:72px}
 .node b{font-size:14px;display:block}
 .node span{font-size:11.5px;color:var(--muted);font-weight:700}
 .langs{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.langs li{min-height:34px;display:inline-flex;align-items:center;padding:0 12px;border-radius:999px;background:var(--paper);border:2px solid var(--line);font-weight:800;font-size:15px}
+.langs li{min-height:34px;display:inline-flex;align-items:center;padding:0 12px;border-radius:999px;background:var(--paper);border:2px solid var(--line);font-weight:700;font-size:15px}
 .tr{font-size:12.5px;color:var(--muted);border-left:3px solid var(--line);padding-left:8px;font-weight:600}
 .float{position:absolute;z-index:2}
 
@@ -168,7 +168,7 @@ section{padding-block:72px}
 /* questions */
 .faq{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin-top:32px}
 details{border:2px solid var(--line);border-radius:18px;padding:0 20px;background:var(--paper)}
-summary{cursor:pointer;font-weight:800;font-size:18px;min-height:60px;padding-block:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none}
+summary{cursor:pointer;font-weight:700;font-size:18px;min-height:60px;padding-block:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none}
 summary::-webkit-details-marker{display:none}
 summary::after{content:"+";font-size:26px;font-weight:700;color:var(--muted);flex:none}
 details[open] summary::after{content:"−"}
@@ -213,7 +213,7 @@ footer .links a:hover{color:var(--ink)}
 /* the ballot: a judge's sheet, not an app card */
 .ballot{width:340px;max-width:100%;background:var(--ballot);border:2px solid var(--ballot-line);border-radius:6px;padding:20px 20px 16px;box-shadow:var(--shadow);transform:rotate(-1.5deg);display:flex;flex-direction:column;gap:12px;background-image:repeating-linear-gradient(to bottom,transparent 0 27px,var(--ballot-line) 27px 28px);background-position:0 54px}
 .b-head{display:flex;justify-content:space-between;border-bottom:3px double var(--ink);padding-bottom:8px;color:var(--ink);font-size:13px}
-.b-head span:first-child{font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:.02em}
+.b-head span:first-child{font-family:var(--display);font-size:22px;font-weight:700;letter-spacing:.02em}
 .b-line{display:flex;gap:10px;align-items:baseline;font-weight:600;font-size:15px}
 .b-k{color:var(--muted);font-size:11px;flex:none}
 .b-box{border-left:4px solid var(--go);padding:4px 0 4px 12px;display:flex;flex-direction:column;gap:4px;background:var(--ballot)}
@@ -357,7 +357,7 @@ footer .links a:hover{color:var(--ink)}
       <div class="phone" role="img" aria-label="The end of a practice. The coach cheers and says the reason was clear and to add an example next time. Two chips read Gave a reason and Add an example, and the streak reaches day one.">
         <div class="screen" style="align-items:stretch">
           <div style="display:flex;justify-content:center;padding-top:6px"><svg width="110" height="110" aria-hidden="true"><use href="#sam-cheer"/></svg></div>
-          <div style="text-align:center;font-family:var(--display);font-weight:800;font-size:24px">Nice one</div>
+          <div style="text-align:center;font-family:var(--display);font-weight:700;font-size:24px">Nice one</div>
           <div class="bubble">"You gave a clear reason. Next time, add one example from your own class."</div>
           <div class="chips" style="justify-content:center"><span class="chip on">You did: gave a reason</span><span class="chip next">Next: add an example</span></div>
           <div class="s-card" style="flex-direction:row;align-items:center;gap:10px"><svg width="26" height="26" aria-hidden="true"><use href="#flame"/></svg><div><b>Day 1 of your streak</b><div style="font-size:12px;color:var(--muted);font-weight:600">Your full report is on its way.</div></div></div>

@@ -4,7 +4,7 @@
 #   mockup.html  the same content for the review artifact (no document wrapper)
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")"
-FONTS='<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@500;600&display=swap">'
+FONTS='<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@500;600&display=swap">'
 TITLE='Debate Coach: speak like a debater, three minutes a day'
 DESC='Your coach listens to every word. Say your point out loud, and the moment you stop, you hear what worked and the one thing to change. Coming to iPhone and Android.'
 {
