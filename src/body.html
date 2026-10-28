@@ -265,7 +265,7 @@ footer .links a:hover{color:var(--ink)}
 .person{display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;padding:8px 12px}
 .person .pic{width:132px;height:88px}
 .person p{color:var(--muted);font-weight:600;font-size:17px;max-width:28ch;margin:0}
-#how .kicker,#plans .kicker,#ways .kicker{justify-content:center;display:flex}
+#how .kicker,#plans .kicker,#ways .kicker,#judged .kicker{justify-content:center;display:flex}
 #ways h2{margin-top:10px}
 .how-first{border-top:2px solid var(--line)}
 #how h2,#plans h2{text-align:center;margin-top:10px}
@@ -324,7 +324,7 @@ footer .links a:hover{color:var(--ink)}
 .m-key{display:flex;gap:14px;font-size:12.5px;font-weight:700;color:var(--muted)}
 .m-key span{display:flex;align-items:center;gap:6px}
 .m-key i{width:14px;height:14px;border-radius:4px}
-#plans .sub{text-align:center;color:var(--muted);font-weight:600;max-width:56ch;margin:12px auto 0;font-size:18px}
+#plans .sub,#judged .sub{text-align:center;color:var(--muted);font-weight:600;max-width:56ch;margin:12px auto 0;font-size:18px}
 .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
 .plan{border:2px solid var(--line);border-radius:22px;padding:22px;background:var(--paper);display:flex;flex-direction:column;gap:8px}
 .plan p{margin:0;color:var(--muted);font-weight:600;font-size:16.5px}
@@ -544,6 +544,15 @@ footer .links a:hover{color:var(--ink)}
   </div>
 </section>
 
+<section id="judged" aria-labelledby="judged-h">
+  <div class="wrap">
+    <span class="kicker">For clubs, classes and coaches</span>
+    <h2 id="judged-h" class="center-h">Full debates, judged like a real round: Shadow Judge.</h2>
+    <p class="sub">Debate Coach is the practice app of Shadow Judge, which runs full rounds in six formats with a judge that hears every word and hands back a ballot for every speaker. Built for clubs, classes and programs.</p>
+    <p style="text-align:center;margin-top:18px"><a class="btn" href="https://shadowjudge.com">See Shadow Judge</a></p>
+  </div>
+</section>
+
 <section class="tinted" id="faq" aria-labelledby="faq-h">
   <div class="wrap">
     <h2 id="faq-h" class="center-h">Questions</h2>
@@ -552,6 +561,7 @@ footer .links a:hover{color:var(--ink)}
       <details><summary>Is AI feedback any good?</summary><p>Every report marks the five things a debate coach listens for and gives you one change to try straight away. Your first five practices are free, so you can judge for yourself.</p></details>
       <details><summary>Who hears my recordings?</summary><p>No person. Only the app's AI hears them: your coach, and the opponent in a round. They stay in your account until you delete them.</p></details>
       <details><summary>Which languages does it support?</summary><p>You practise in English. Menus and reports can also be shown in Simplified or Traditional Chinese, Korean, Japanese, Vietnamese, Spanish or Portuguese.</p></details>
+      <details><summary>Can I debate a full round?</summary><p>Not in the app: it practises one skill at a time, up to mini rounds. Full rounds in six formats, judged speech by speech, are Shadow Judge, which Debate Coach is the practice app of. <a href="https://shadowjudge.com">shadowjudge.com</a>.</p></details>
       <details><summary>How old do I need to be?</summary><p>13 or older.</p></details>
       <details><summary>When can I get it?</summary><p>Soon, on iPhone and Android.</p></details>
     </div>
@@ -580,7 +590,7 @@ footer .links a:hover{color:var(--ink)}
 <footer>
   <div class="wrap">
     <span>© 2026 Debate Coach</span>
-    <nav class="links" aria-label="Footer"><a href="#how">How it works</a><a href="#plans">Plans</a><a href="privacy.html">Privacy</a><a href="#faq">Questions</a></nav>
+    <nav class="links" aria-label="Footer"><a href="#how">How it works</a><a href="#plans">Plans</a><a href="https://shadowjudge.com">Shadow Judge</a><a href="privacy.html">Privacy</a><a href="#faq">Questions</a></nav>
   </div>
 </footer>
 
