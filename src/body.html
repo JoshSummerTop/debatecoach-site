@@ -48,6 +48,9 @@ a{color:inherit}
 .top{display:flex;align-items:center;justify-content:space-between;padding-block:14px;border-bottom:2px solid var(--line)}
 .brand{white-space:nowrap;display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:22px;text-decoration:none;min-height:44px;color:var(--ink)}
 .brand svg{width:36px;height:36px;flex:none}
+.brandbox{display:flex;flex-direction:column}
+.by{font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--go-text);text-decoration:none;margin:-16px 0 -12px 46px;padding:16px 0;line-height:1;align-self:flex-start}
+.by:hover{text-decoration:underline}
 .navlinks{display:flex;gap:4px;align-items:center;font-size:15px;font-weight:700}
 .navlinks a{text-decoration:none;min-height:44px;display:inline-flex;align-items:center;padding-inline:12px;border-radius:12px;color:var(--muted)}
 .navlinks a:hover{color:var(--ink);background:var(--tint)}
@@ -228,6 +231,7 @@ footer .links a:hover{color:var(--ink)}
   .ballot{transform:none}
   .brand{font-size:18px;gap:8px}
   .brand svg{width:32px;height:32px}
+  .by{margin:-17px 0 -13px 40px;font-size:11px;padding:17px 0}
   .navlinks .btn{padding:0 12px;font-size:13px;letter-spacing:.04em}
   .store{min-width:0;flex:1 1 150px;padding:8px 12px}
   .store b{font-size:17px}
@@ -386,10 +390,13 @@ footer .links a:hover{color:var(--ink)}
 
 <a class="skip" href="#main">Skip to the content</a>
 <header class="wrap top">
+  <div class="brandbox">
   <a class="brand" href="#top" aria-label="Debate Coach, back to the top">
     <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#0e7a70"/><path d="M22 78 V31 A9 9 0 0 1 31 22 H50 A28 28 0 0 1 78 50 A28 28 0 0 1 50 78 Z" fill="none" stroke="#fff" stroke-width="5"/><circle cx="42" cy="45" r="3.3" fill="#fff"/><circle cx="56" cy="45" r="3.3" fill="#fff"/><path d="M42 55.5 A14 14 0 0 0 56 55.5" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>
     Debate Coach
   </a>
+  <a class="by" href="https://shadowjudge.com">by Shadow Judge</a>
+  </div>
   <nav class="navlinks" aria-label="Main">
     <a href="#how">How it works</a>
     <a href="#plans">Plans</a>
@@ -546,9 +553,9 @@ footer .links a:hover{color:var(--ink)}
 
 <section id="judged" aria-labelledby="judged-h">
   <div class="wrap">
-    <span class="kicker">For clubs, classes and coaches</span>
-    <h2 id="judged-h" class="center-h">Full debates, judged like a real round: Shadow Judge.</h2>
-    <p class="sub">Debate Coach is the practice app of Shadow Judge, which runs full rounds in six formats with a judge that hears every word and hands back a ballot for every speaker. Built for clubs, classes and programs.</p>
+    <span class="kicker">Shadow Judge</span>
+    <h2 id="judged-h" class="center-h">Full debates, judged like a real round.</h2>
+    <p class="sub">Debate Coach is the practice app of Shadow Judge, which runs full debate rounds online: six formats, a judge that hears every word, a ballot for every speaker. For debating with people, in classes and organisations.</p>
     <p style="text-align:center;margin-top:18px"><a class="btn" href="https://shadowjudge.com">See Shadow Judge</a></p>
   </div>
 </section>
@@ -561,7 +568,7 @@ footer .links a:hover{color:var(--ink)}
       <details><summary>Is AI feedback any good?</summary><p>Every report marks the five things a debate coach listens for and gives you one change to try straight away. Your first five practices are free, so you can judge for yourself.</p></details>
       <details><summary>Who hears my recordings?</summary><p>No person. Only the app's AI hears them: your coach, and the opponent in a round. They stay in your account until you delete them.</p></details>
       <details><summary>Which languages does it support?</summary><p>You practise in English. Menus and reports can also be shown in Simplified or Traditional Chinese, Korean, Japanese, Vietnamese, Spanish or Portuguese.</p></details>
-      <details><summary>Can I debate a full round?</summary><p>Not in the app: it practises one skill at a time, up to mini rounds. Full rounds in six formats, judged speech by speech, are Shadow Judge, which Debate Coach is the practice app of. The section above has the link.</p></details>
+      <details><summary>Can I debate a full round?</summary><p>Not in the app: it practises one skill at a time, up to mini rounds. Full rounds in six formats, judged speech by speech, are Shadow Judge, which runs debates online. The link is at the top of the page.</p></details>
       <details><summary>How old do I need to be?</summary><p>13 or older.</p></details>
       <details><summary>When can I get it?</summary><p>Soon, on iPhone and Android.</p></details>
     </div>
